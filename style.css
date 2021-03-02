@@ -15,8 +15,43 @@ body {
 }
 
 .container {
+    /* border: 1px solid grey; */
     width: 400px;
     height: 600px;
-    border: 1px solid grey;
+    background: #fafafa;
+    
 
 }
+
+.header {
+    height: 300px;
+    background: #a377f7;
+}
+
+.main {
+    padding: 20px;
+}
+
+
+input.slider {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 20px;
+    outline: none;
+    margin-top: 20px;
+    border-radius: 8px;
+    background: #e4ebf5;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+input.slider::-webkit-slider-thumb {
+    -webkit-appearance: none; /* Override default look */
+    appearance: none;
+    width: 20px;
+    height: 20px; 
+    border-radius: 50%;
+    background: rgb(110, 108, 233); /* Green background */
+    cursor: pointer; /* Cursor on hover */
+}
+
