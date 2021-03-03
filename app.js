@@ -2,24 +2,23 @@ const header = document.getElementById("header");
 const redSlider = document.getElementById("red");
 const greenSlider = document.getElementById("green");
 const blueSlider = document.getElementById("blue");
-const sliders = document.querySelectorAll(".slider"); // all sliders
+
+const RGB = document.querySelectorAll(".rgb > span"); // all <span>s in .rgb
 
 
-for (let i = 0; i < sliders.length; i++) {
-    sliders[i].addEventListener("mousedown", changeColor);
-    sliders[i].addEventListener("mouseup", () => clearInterval(id));
-    // clear interval when you're not clicking (for optimization)
-}
+setInterval(() => {
 
-var count = 0;
-function changeColor() {
-    id = setInterval(() => {
-        count ++;
-        console.log(count);
-        header.style.background = `rgb(
-            ${redSlider.value},
-            ${greenSlider.value},
-            ${blueSlider.value}
-        )`;
-    }, 10);
-}
+    header.style.background = `rgb(${redSlider.value},${greenSlider.value},${blueSlider.value})`;
+
+    RGB[0].innerHTML = redSlider.value;
+    RGB[0].style.background = `rgb(${redSlider.value}, 0, 0)`;
+
+    RGB[1].innerHTML = greenSlider.value;
+    RGB[1].style.background = `rgb(0, ${greenSlider.value}, 0)`;
+
+    RGB[2].innerHTML = blueSlider.value;
+    RGB[2].style.background = `rgb(0, 0, ${blueSlider.value})`;
+
+}, 10);
+
+

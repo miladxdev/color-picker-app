@@ -11,6 +11,8 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+
+    font-family: '@Microsoft Yahei Ui Light';
 }
 
 
@@ -65,6 +67,32 @@ input.slider::-webkit-slider-thumb:hover {
     width: 28px;
     height: 28px;
 }
+
 input#red::-webkit-slider-thumb { background: rgb(224, 100, 100);}
 input#green::-webkit-slider-thumb { background: rgb(100, 224, 100);}
 input#blue::-webkit-slider-thumb { background: rgb(100, 106, 224);}
+
+.slider::-webkit-slider-ran{
+    background-color: #43e5f7; 
+}
+
+.rgb {
+    margin-top: 20px;
+    color: white;
+    font-size: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.rgb span {
+    width: 100px;
+    height: 50px;
+    border-radius: 5px;
+    background: #e4ebf5;
+
+    opacity: 0.7;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
