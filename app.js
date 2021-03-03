@@ -2,9 +2,19 @@ const header = document.getElementById("header");
 const redSlider = document.getElementById("red");
 const greenSlider = document.getElementById("green");
 const blueSlider = document.getElementById("blue");
+const HEX =  document.getElementById("hex");
 
 const shades = document.querySelectorAll(".color-shade > span");
 const RGB = document.querySelectorAll(".rgb > span"); // all <span> tags in the .rgb class
+
+function componentToHex(c) {
+    var hex = c.toString(16);
+    return hex.length == 1 ? "0" + hex : hex;
+}
+  
+function rgbToHex(r, g, b) {
+    return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
+}
 
 
 setInterval(() => {
@@ -21,6 +31,8 @@ setInterval(() => {
     RGB[2].style.background = `rgb(0, 0, ${blueSlider.value})`;
     
 
+    HEX.innerHTML = rgbToHex(redSlider.value, greenSlider.value, blueSlider.value);
+
     let alpha = 1;
     for (let s in shades) {
         shades[s].style.background = `rgba(${redSlider.value},${greenSlider.value},${blueSlider.value}, ${alpha})`;
@@ -28,6 +40,8 @@ setInterval(() => {
         alpha -= 0.1;
         console.log(alpha);
     }
+
+
 
 }, 10);
 

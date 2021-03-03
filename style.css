@@ -9,9 +9,8 @@ body {
     background: #e4ebf5;
     height: 100vh;
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
-
     font-family: '@Microsoft Yahei Ui Light';
 }
 
@@ -29,6 +28,10 @@ body {
     padding: 20px;
 }
 
+
+.header {
+    
+}
 
 .range-sliders {
     height: 150px;
