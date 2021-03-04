@@ -1,3 +1,4 @@
+
 // elements in header
 const header = document.getElementById("header");
 const hexElement =  document.getElementById("hex");
@@ -49,3 +50,16 @@ randomBtn.addEventListener("click", () => {
     greenSlider.value = Math.random() * 255;
     blueSlider.value  = Math.random() * 255;
 });
+
+
+var mySlider = document.getElementById('slider');
+rangesliderJs.create(mySlider, {
+    onInit: (value, percent, position) => {
+        value = 0;
+        percent = 10;
+        position = 10;
+    },
+    // onSlideStart: (value, percent, position) => {},
+    // onSlide: (value, percent, position) => {},
+    // onSlideEnd: (value, percent, position) => {}
+  });
