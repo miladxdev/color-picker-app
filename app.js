@@ -1,33 +1,65 @@
+
+// elements in header
 const header = document.getElementById("header");
+const hexElement =  document.getElementById("hex");
+const randomBtn = document.getElementById("rnd");
+// slider elements
 const redSlider = document.getElementById("red");
 const greenSlider = document.getElementById("green");
 const blueSlider = document.getElementById("blue");
+ // all <span> tags in the div.rgb
+const rgbElements = document.querySelectorAll(".rgb-colors > span");
 
-const shades = document.querySelectorAll(".color-shade > span");
-const RGB = document.querySelectorAll(".rgb > span"); // all <span> tags in the .rgb class
+
+// functions to convert RGB color to HEX color
+function hex(color) { 
+    let hex = Number(color).toString(16);
+    if (hex.length < 2) {
+        hex = "0" + hex;
+    }
+    return hex;
+};
+function rgbToHex(r, g, b) {
+    let red   = hex(r);
+    let green = hex(g);
+    let blue  = hex(b);
+    return red + green + blue;
+};
 
 
 setInterval(() => {
-
+    // updates header with current slider values
     header.style.background = `rgb(${redSlider.value},${greenSlider.value},${blueSlider.value})`;
-    // 1st <span>
-    RGB[0].innerHTML = redSlider.value;
-    RGB[0].style.background = `rgb(${redSlider.value}, 0, 0)`;
-    //2nd <span>
-    RGB[1].innerHTML = greenSlider.value;
-    RGB[1].style.background = `rgb(0, ${greenSlider.value}, 0)`;
-    //3rd <span>
-    RGB[2].innerHTML = blueSlider.value;
-    RGB[2].style.background = `rgb(0, 0, ${blueSlider.value})`;
-    
-
-    let alpha = 1;
-    for (let s in shades) {
-        shades[s].style.background = `rgba(${redSlider.value},${greenSlider.value},${blueSlider.value}, ${alpha})`;
-        shades[s].innerHTML = `rgba (${redSlider.value}, ${greenSlider.value}, ${blueSlider.value}, ${Math.round(alpha * 10) / 10})`;
-        alpha -= 0.1;
-        console.log(alpha);
-    }
-
+    // 1st <span> red
+    rgbElements[0].innerHTML = redSlider.value;
+    rgbElements[0].style.background = `rgb(${redSlider.value}, 0, 0)`;
+    //2nd <span> green
+    rgbElements[1].innerHTML = greenSlider.value;
+    rgbElements[1].style.background = `rgb(0, ${greenSlider.value}, 0)`;
+    //3rd <span> blue
+    rgbElements[2].innerHTML = blueSlider.value;
+    rgbElements[2].style.background = `rgb(0, 0, ${blueSlider.value})`;
+    // displays hex color code
+    hexElement.innerHTML ="#"+rgbToHex(redSlider.value, greenSlider.value, blueSlider.value);
 }, 10);
 
+
+// Generates a random color
+randomBtn.addEventListener("click", () => {
+    redSlider.value   = Math.random() * 255;
+    greenSlider.value = Math.random() * 255;
+    blueSlider.value  = Math.random() * 255;
+});
+
+
+var mySlider = document.getElementById('slider');
+rangesliderJs.create(mySlider, {
+    onInit: (value, percent, position) => {
+        value = 0;
+        percent = 10;
+        position = 10;
+    },
+    // onSlideStart: (value, percent, position) => {},
+    // onSlide: (value, percent, position) => {},
+    // onSlideEnd: (value, percent, position) => {}
+  });
