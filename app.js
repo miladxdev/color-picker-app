@@ -6,38 +6,52 @@ const randomBtn = document.getElementById("rnd");
 const redSlider = document.getElementById("red");
 const greenSlider = document.getElementById("green");
 const blueSlider = document.getElementById("blue");
- // all <span> tags in the div.rgb
+ // R span + G span + B span
 const rgbElements = document.querySelectorAll(".rgb-colors > span");
-
+// all span elements in #tints and #shadows
+const tints = document.querySelectorAll("#tints > span");
+const shades = document.querySelectorAll("#shades > span");
 
 // functions to convert RGB color to HEX color
-function hex(color) { 
-    let hex = Number(color).toString(16);
-    if (hex.length < 2) hex = "0" + hex;
-    return hex;
-};
 function rgbToHex(r, g, b) {
-    let red   = hex(r);
-    let green = hex(g);
-    let blue  = hex(b);
-    return red + green + blue;
+    r = Number(r).toString(16);
+    g = Number(g).toString(16);
+    b = Number(b).toString(16);
+    
+    if (r.length < 2) r = '0' + r;
+    if (g.length < 2) g = '0' + g;
+    if (b.length < 2) b = '0' + b;
+
+    return '#' + r + g + b;
 };
 
 
 setInterval(() => {
     // updates header with current slider values
     header.style.background = `rgb(${redSlider.value},${greenSlider.value},${blueSlider.value})`;
-    // 1st <span> red
+    // Red
     rgbElements[0].innerHTML = redSlider.value;
     rgbElements[0].style.background = `rgb(${redSlider.value}, 0, 0)`;
-    //2nd <span> green
+    // green
     rgbElements[1].innerHTML = greenSlider.value;
     rgbElements[1].style.background = `rgb(0, ${greenSlider.value}, 0)`;
-    //3rd <span> blue
+    // blue
     rgbElements[2].innerHTML = blueSlider.value;
     rgbElements[2].style.background = `rgb(0, 0, ${blueSlider.value})`;
+
     // displays hex color code
-    hexElement.innerHTML ="#"+rgbToHex(redSlider.value, greenSlider.value, blueSlider.value);
+    hexElement.innerHTML = rgbToHex(redSlider.value, greenSlider.value, blueSlider.value);
+
+    // color tints and shadows
+    let alpha = 1;
+    for (let i = 0; i < tints.length; i++) {
+        tints[i].style.background = `rgba(${redSlider.value},${greenSlider.value},${blueSlider.value}, ${alpha})`;
+        // tints[i].innerHTML = `rgba(${redSlider.value},${greenSlider.value},${blueSlider.value}, ${alpha.toFixed(1)})`;
+
+        shades[i].style.background = `rgba(${redSlider.value},${greenSlider.value},${blueSlider.value}, ${alpha})`;
+        // shades[i].innerHTML = `rgba(${redSlider.value},${greenSlider.value},${blueSlider.value}, ${alpha.toFixed(1)})`;
+        alpha -= 0.1;
+    }
 }, 10);
 
 
@@ -47,6 +61,8 @@ randomBtn.addEventListener("click", () => {
     greenSlider.value = Math.random() * 255;
     blueSlider.value  = Math.random() * 255;
 });
+
+
 
 
 

@@ -119,12 +119,35 @@ input#blue::-webkit-slider-thumb  { background: #0000ff99; }
 .rgb-colors span {
     width: 100px;
     height: 50px;
-    border-radius: 5px;
+    border-radius: 0px;
     background: #e4ebf5;
-    opacity: 0.7;
+    opacity: .8;
 }
 
 
+
+#tints,
+#shades {
+    display: grid;
+    grid-template-columns: 1;
+    grid-template-rows: 10;
+
+    width: 200px;
+    height: 600px;
+    background: white;
+    font-size: 12px;
+    color: white;
+    text-shadow: 0 0 5px black;
+}
+#shades {
+    background: black;
+}
+#tints span,
+#shades span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 /* instagram: web.script
 github: github.com/xcripts
 © 2020 Milad Gharibi.  All rights reserved */
