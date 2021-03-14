@@ -13,16 +13,17 @@ const tints = document.querySelectorAll("#tints > span");
 const shades = document.querySelectorAll("#shades > span");
 
 // functions to convert RGB color to HEX color
-function hex(color) { 
-    let hex = Number(color).toString(16);
-    if (hex.length < 2) hex = "0" + hex;
-    return hex;
-};
 function rgbToHex(r, g, b) {
-    let red   = hex(r);
-    let green = hex(g);
-    let blue  = hex(b);
-    return red + green + blue;
+    
+    r = Number(r).toString(16);
+    g = Number(g).toString(16);
+    b = Number(b).toString(16);
+    
+    if (r.length < 2) r = '0' + r;
+    if (g.length < 2) g = '0' + g;
+    if (b.length < 2) b = '0' + b;
+
+    return '#' + r + g + b;
 };
 
 
@@ -39,7 +40,7 @@ setInterval(() => {
     rgbElements[2].innerHTML = blueSlider.value;
     rgbElements[2].style.background = `rgb(0, 0, ${blueSlider.value})`;
     // displays hex color code
-    hexElement.innerHTML ="#"+rgbToHex(redSlider.value, greenSlider.value, blueSlider.value);
+    hexElement.innerHTML = rgbToHex(redSlider.value, greenSlider.value, blueSlider.value);
 
     // color tints
     let alpha = 1;

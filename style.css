@@ -119,9 +119,9 @@ input#blue::-webkit-slider-thumb  { background: #0000ff99; }
 .rgb-colors span {
     width: 100px;
     height: 50px;
-    border-radius: 5px;
+    border-radius: 0px;
     background: #e4ebf5;
-    opacity: 0.7;
+    opacity: .8;
 }
 
 
