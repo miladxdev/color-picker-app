@@ -126,7 +126,8 @@ input#blue::-webkit-slider-thumb  { background: #0000ff99; }
 
 
 
-.tints {
+#tints,
+#shades {
     display: grid;
     grid-template-columns: 1;
     grid-template-rows: 10;
@@ -138,7 +139,11 @@ input#blue::-webkit-slider-thumb  { background: #0000ff99; }
     color: white;
     text-shadow: 0 0 5px black;
 }
-.tints span {
+#shades {
+    background: black;
+}
+#tints span,
+#shades span {
     display: flex;
     justify-content: center;
     align-items: center;

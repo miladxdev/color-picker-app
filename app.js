@@ -10,6 +10,7 @@ const blueSlider = document.getElementById("blue");
 const rgbElements = document.querySelectorAll(".rgb-colors > span");
 // all spans in #tints
 const tints = document.querySelectorAll("#tints > span");
+const shades = document.querySelectorAll("#shades > span");
 
 // functions to convert RGB color to HEX color
 function hex(color) { 
@@ -44,8 +45,13 @@ setInterval(() => {
     let alpha = 1;
     for (let i = 0; i < tints.length; i++) {
         tints[i].style.background = `rgba(${redSlider.value},${greenSlider.value},${blueSlider.value}, ${alpha})`;
-        tints[i].innerHTML = `rgba(${redSlider.value},${greenSlider.value},${blueSlider.value}, ${alpha.toFixed(1)})`;
+        // tints[i].innerHTML = `rgba(${redSlider.value},${greenSlider.value},${blueSlider.value}, ${alpha.toFixed(1)})`;
+
+
+        shades[i].style.background = `rgba(${redSlider.value},${greenSlider.value},${blueSlider.value}, ${alpha})`;
+        // shades[i].innerHTML = `rgba(${redSlider.value},${greenSlider.value},${blueSlider.value}, ${alpha.toFixed(1)})`;
         alpha -= 0.1;
+
         // tints[i].style.background = `rgb(${redSlider.value-10*i},${greenSlider.value-10*i},${blueSlider.value-10*i})`
     }
 }, 10);
