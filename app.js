@@ -1,4 +1,3 @@
-
 // elements in header
 const header = document.getElementById("header");
 const hexElement =  document.getElementById("hex");
@@ -14,9 +13,7 @@ const rgbElements = document.querySelectorAll(".rgb-colors > span");
 // functions to convert RGB color to HEX color
 function hex(color) { 
     let hex = Number(color).toString(16);
-    if (hex.length < 2) {
-        hex = "0" + hex;
-    }
+    if (hex.length < 2) hex = "0" + hex;
     return hex;
 };
 function rgbToHex(r, g, b) {
@@ -52,14 +49,7 @@ randomBtn.addEventListener("click", () => {
 });
 
 
-var mySlider = document.getElementById('slider');
-rangesliderJs.create(mySlider, {
-    onInit: (value, percent, position) => {
-        value = 0;
-        percent = 10;
-        position = 10;
-    },
-    // onSlideStart: (value, percent, position) => {},
-    // onSlide: (value, percent, position) => {},
-    // onSlideEnd: (value, percent, position) => {}
-  });
+
+// instagram: web.script
+// github: github.com/xcripts
+// © 2020 Milad Gharibi.  All rights reserved
