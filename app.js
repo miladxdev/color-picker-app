@@ -8,7 +8,8 @@ const greenSlider = document.getElementById("green");
 const blueSlider = document.getElementById("blue");
  // all <span> tags in the div.rgb
 const rgbElements = document.querySelectorAll(".rgb-colors > span");
-
+// all spans in #tints
+const tints = document.querySelectorAll("#tints > span");
 
 // functions to convert RGB color to HEX color
 function hex(color) { 
@@ -38,6 +39,15 @@ setInterval(() => {
     rgbElements[2].style.background = `rgb(0, 0, ${blueSlider.value})`;
     // displays hex color code
     hexElement.innerHTML ="#"+rgbToHex(redSlider.value, greenSlider.value, blueSlider.value);
+
+    // color tints
+    let alpha = 1;
+    for (let i = 0; i < tints.length; i++) {
+        tints[i].style.background = `rgba(${redSlider.value},${greenSlider.value},${blueSlider.value}, ${alpha})`;
+        tints[i].innerHTML = `rgba(${redSlider.value},${greenSlider.value},${blueSlider.value}, ${alpha.toFixed(1)})`;
+        alpha -= 0.1;
+        // tints[i].style.background = `rgb(${redSlider.value-10*i},${greenSlider.value-10*i},${blueSlider.value-10*i})`
+    }
 }, 10);
 
 
@@ -47,6 +57,8 @@ randomBtn.addEventListener("click", () => {
     greenSlider.value = Math.random() * 255;
     blueSlider.value  = Math.random() * 255;
 });
+
+
 
 
 
