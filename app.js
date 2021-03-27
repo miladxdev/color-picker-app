@@ -12,6 +12,10 @@ const rgbElements = document.querySelectorAll(".rgb-colors > span");
 const tints = document.querySelectorAll("#tints > span");
 const shades = document.querySelectorAll("#shades > span");
 const tones = document.querySelectorAll("#tones > span");
+//
+const r = document.getElementById("r");
+const g = document.getElementById("g");
+const b = document.getElementById("b");
 
 // functions to convert RGB color to HEX color
 function rgbToHex(r, g, b) {
@@ -56,6 +60,10 @@ setInterval(() => {
 
         alpha -= 0.1;
     }
+
+    r.innerHTML = "R : " + redSlider.value;
+    g.innerHTML = "G : " + greenSlider.value;
+    b.innerHTML = "B : " + blueSlider.value;
 }, 10);
 
 

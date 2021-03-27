@@ -161,8 +161,13 @@ background: grey;
     justify-content: space-around;
     width: 150px;
     height: 600px;
-    padding: 20px;
+    padding: 10px;
     background: #e2e2e2;
+}
+.row {
+    background: #fafafa;
+    padding: 10px;
+    border-radius: 10px;
 }
 .row span {
     display: block;
