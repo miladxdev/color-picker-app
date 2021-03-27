@@ -127,12 +127,13 @@ input#blue::-webkit-slider-thumb  { background: #0000ff99; }
 
 
 #tints,
-#shades {
+#shades,
+#tones {
     display: grid;
     grid-template-columns: 1;
     grid-template-rows: 10;
 
-    width: 200px;
+    width: 100px;
     height: 600px;
     background: white;
     font-size: 12px;
@@ -140,13 +141,31 @@ input#blue::-webkit-slider-thumb  { background: #0000ff99; }
     text-shadow: 0 0 5px black;
 }
 #shades {
-    background: black;
+    background: #000000;
 }
+#tones {
+background: grey;
+}
+
 #tints span,
-#shades span {
+#shades span,
+#tones span {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.state {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 150px;
+    height: 600px;
+    padding: 20px;
+    background: #e2e2e2;
+}
+.row span {
+    display: block;
 }
 /* instagram: web.script
 github: github.com/xcripts

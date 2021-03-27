@@ -11,6 +11,7 @@ const rgbElements = document.querySelectorAll(".rgb-colors > span");
 // all span elements in #tints and #shadows
 const tints = document.querySelectorAll("#tints > span");
 const shades = document.querySelectorAll("#shades > span");
+const tones = document.querySelectorAll("#tones > span");
 
 // functions to convert RGB color to HEX color
 function rgbToHex(r, g, b) {
@@ -50,6 +51,9 @@ setInterval(() => {
 
         shades[i].style.background = `rgba(${redSlider.value},${greenSlider.value},${blueSlider.value}, ${alpha})`;
         // shades[i].innerHTML = `rgba(${redSlider.value},${greenSlider.value},${blueSlider.value}, ${alpha.toFixed(1)})`;
+
+        tones[i].style.background = `rgba(${redSlider.value},${greenSlider.value},${blueSlider.value}, ${alpha})`;
+
         alpha -= 0.1;
     }
 }, 10);
