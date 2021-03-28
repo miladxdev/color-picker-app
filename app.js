@@ -1,3 +1,4 @@
+const appContainer = document.getElementById("app-container");
 // elements in header
 const header = document.getElementById("header");
 const hexElement =  document.getElementById("hex");
@@ -12,6 +13,8 @@ const rgbElements = document.querySelectorAll(".rgb-colors > span");
 const tints = document.querySelectorAll("#tints > span");
 const shades = document.querySelectorAll("#shades > span");
 const tones = document.querySelectorAll("#tones > span");
+
+const state = document.getElementById("state");
 //
 const r = document.getElementById("r");
 const g = document.getElementById("g");
@@ -70,6 +73,7 @@ function rgbToHsl(red, green, blue) {
 }
 
 setInterval(() => {
+    appContainer.style.boxShadow = `0 0 50px 0 rgba(${redSlider.value},${greenSlider.value},${blueSlider.value}, ${0.5})`;
     // updates header with current slider values
     header.style.background = `rgb(${redSlider.value},${greenSlider.value},${blueSlider.value})`;
     // Red
@@ -98,6 +102,8 @@ setInterval(() => {
 
         alpha -= 0.1;
     }
+
+    state.style.background = `rgba(${redSlider.value},${greenSlider.value},${blueSlider.value}, ${0.2})`;
 
     r.innerHTML = "R : " + redSlider.value;
     g.innerHTML = "G : " + greenSlider.value;
