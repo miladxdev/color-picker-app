@@ -81,6 +81,7 @@ input.slider {
     height: 20px;
     outline: none;
     border-radius: 8px;
+    background: rgb(101, 132, 179);
     background: #e4ebf5;
     -webkit-transition: 1s;
     transition: 1s;

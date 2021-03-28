@@ -17,6 +17,10 @@ const r = document.getElementById("r");
 const g = document.getElementById("g");
 const b = document.getElementById("b");
 
+//
+const hsl = document.getElementById("hsl");
+
+
 // functions to convert RGB color to HEX color
 function rgbToHex(r, g, b) {
     r = Number(r).toString(16);
@@ -29,6 +33,43 @@ function rgbToHex(r, g, b) {
 
     return '#' + r + g + b;
 };
+
+
+
+function rgbToHsl(red, green, blue) {
+    red = red < 0 ? 0 : red > 255 ? 255 : red;
+    green = green < 0 ? 0 : green > 255 ? 255 : green;
+    blue = blue < 0 ? 0 : blue > 255 ? 255 : blue;
+
+    var r = red / 255,
+        g = green / 255,
+        b = blue / 255,
+        min = Math.min(r, g, b),
+        max = Math.max(r, g, b),
+        delta = max - min,
+        h, s, l;
+    if (max == min) {
+        h = 0;
+    } else if (r == max) {
+        h = (g - b) / delta;
+    } else if (g == max) {
+        h = 2 + (b - r) / delta;
+    } else if (b == max) {
+        h = 4 + (r - g) / delta;
+    }
+    h = Math.min(h * 60, 360);
+    if (h < 0) h += 360;
+    l = (min + max) / 2;
+    if (max == min) s = 0;
+    else if (l <= 0.5) s = delta / (max + min);
+    else s = delta / (2 - max - min);
+    return [
+      Math.round(h),
+      Math.round(s * 100)+"%",
+      Math.round(l * 100)+"%"
+    ];
+}
+
 
 
 setInterval(() => {
@@ -64,6 +105,10 @@ setInterval(() => {
     r.innerHTML = "R : " + redSlider.value;
     g.innerHTML = "G : " + greenSlider.value;
     b.innerHTML = "B : " + blueSlider.value;
+
+    hsl.innerHTML = rgbToHsl(redSlider.value, greenSlider.value, blueSlider.value);
+
+
 }, 10);
 
 
