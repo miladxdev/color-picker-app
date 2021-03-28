@@ -20,6 +20,15 @@ body {
     align-items: center;
     font-family: '@Microsoft Yahei Ui Light';
 }
+#app-container {
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 40px;
+    overflow: hidden;
+}
 
 
 .color-pick {
@@ -81,6 +90,7 @@ input.slider {
     height: 20px;
     outline: none;
     border-radius: 8px;
+    background: rgb(101, 132, 179);
     background: #e4ebf5;
     -webkit-transition: 1s;
     transition: 1s;
@@ -127,12 +137,13 @@ input#blue::-webkit-slider-thumb  { background: #0000ff99; }
 
 
 #tints,
-#shades {
+#shades,
+#tones {
     display: grid;
     grid-template-columns: 1;
     grid-template-rows: 10;
 
-    width: 200px;
+    width: 100px;
     height: 600px;
     background: white;
     font-size: 12px;
@@ -140,14 +151,74 @@ input#blue::-webkit-slider-thumb  { background: #0000ff99; }
     text-shadow: 0 0 5px black;
 }
 #shades {
-    background: black;
+    background: #000000;
 }
+#tones {
+    background: grey;
+}
+
 #tints span,
-#shades span {
+#shades span,
+#tones span {
     display: flex;
     justify-content: center;
     align-items: center;
 }
+
+.state {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 150px;
+    height: 600px;
+    padding: 15px;
+    background: #e2e2e2;
+}
+.row {
+    position: relative;
+    background: rgba(250, 250, 250, 0.5);
+    padding: 10px;
+    border-radius: 10px;
+}
+.row span {
+    display: block;
+    margin-bottom: 5px;
+}
+.row h3 { padding-bottom: 10px; }
+.row #copy-btn {
+    opacity: 0;
+    float:right;
+    width: 20px;
+    height:20px;
+    margin-top: 20px;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: opacity .1s;
+}
+.row #copy-btn:hover {
+    background: #dbdbdb;
+}
+.row:hover #copy-btn {
+    opacity: 1;
+}
+
+.tooltip {
+    position: absolute;
+    top: -38px;
+    right: 10px;
+    /* border: 1px solid red; */
+}
+.tooltip span {
+    opacity: 0;
+    padding: 5px;
+    border-radius: 5px;
+    font-weight: bold;
+    background: rgb(185, 255, 185);
+    color: rgb(30, 80, 30);
+}
+
 /* instagram: web.script
 github: github.com/xcripts
 © 2020 Milad Gharibi.  All rights reserved */

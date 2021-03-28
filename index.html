@@ -7,11 +7,28 @@
     <link rel="stylesheet" href="style.css">
     <script src="app.js" defer></script>
     <title>colour-tool app</title>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
 </head>
 <body>
 
-    <div id="shades">
+<div id="app-container">
+
+    <div class="tones" id="tones">
+        <span>Tones</span>
         <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <div id="shades">
+        <span>Shades</span>
         <span></span>
         <span></span>
         <span></span>
@@ -25,7 +42,7 @@
     </div>
 
     <div class="tints" id="tints">
-        <span></span>
+        <span>Tints</span>
         <span></span>
         <span></span>
         <span></span>
@@ -40,8 +57,7 @@
 
     <div class="color-pick">
         <div id="header">
-            <span id="hex"></span>
-            <div class="random fcc" id="rnd">🎲</div>
+            <div class="random fcc" id="rnd"><i class="fa fa-repeat"></i></div>
         </div>
         <div class="main">
             <div class="range-sliders">
@@ -56,6 +72,41 @@
             </div>
         </div>
     </div>
+
+    <div class="state" id="state">
+        <div class="row">
+            <h3>RGB</h3>
+            <span id="r"></span>
+            <span id="g"></span>
+            <span id="b"></span>
+            <div class="tooltip">
+                <span>Copied!</span>
+                <button id="copy-btn">C</button>
+            </div>
+        </div>
+        <div class="row">
+            <h3>HEX</h3>
+            <span id="hex"></span>
+            <div class="tooltip">
+                <span>Copied!</span>
+                <button id="copy-btn">C</button>
+            </div>
+        </div>
+        <div class="row">
+            <h3>HSL</h3>
+            <span id="h"></span>
+            <span id="s"></span>
+            <span id="l"></span>
+            <div class="tooltip">
+                <span>Copied!</span>
+                <button id="copy-btn">C</button>
+            </div>
+            
+        </div>
+        
+    </div>
+
+</div>
 
 </body>
 </html>

@@ -1,3 +1,4 @@
+const appContainer = document.getElementById("app-container");
 // elements in header
 const header = document.getElementById("header");
 const hexElement =  document.getElementById("hex");
@@ -11,8 +12,20 @@ const rgbElements = document.querySelectorAll(".rgb-colors > span");
 // all span elements in #tints and #shadows
 const tints = document.querySelectorAll("#tints > span");
 const shades = document.querySelectorAll("#shades > span");
+const tones = document.querySelectorAll("#tones > span");
 
-// functions to convert RGB color to HEX color
+const state = document.getElementById("state");
+//
+const r = document.getElementById("r");
+const g = document.getElementById("g");
+const b = document.getElementById("b");
+
+//
+const h = document.getElementById("h");
+const s = document.getElementById("s");
+const l = document.getElementById("l");
+
+// functions to convert colors
 function rgbToHex(r, g, b) {
     r = Number(r).toString(16);
     g = Number(g).toString(16);
@@ -25,8 +38,42 @@ function rgbToHex(r, g, b) {
     return '#' + r + g + b;
 };
 
+function rgbToHsl(red, green, blue) {
+    red = red < 0 ? 0 : red > 255 ? 255 : red;
+    green = green < 0 ? 0 : green > 255 ? 255 : green;
+    blue = blue < 0 ? 0 : blue > 255 ? 255 : blue;
+
+    var r = red / 255,
+        g = green / 255,
+        b = blue / 255,
+        min = Math.min(r, g, b),
+        max = Math.max(r, g, b),
+        delta = max - min,
+        h, s, l;
+    if (max == min) {
+        h = 0;
+    } else if (r == max) {
+        h = (g - b) / delta;
+    } else if (g == max) {
+        h = 2 + (b - r) / delta;
+    } else if (b == max) {
+        h = 4 + (r - g) / delta;
+    }
+    h = Math.min(h * 60, 360);
+    if (h < 0) h += 360;
+    l = (min + max) / 2;
+    if (max == min) s = 0;
+    else if (l <= 0.5) s = delta / (max + min);
+    else s = delta / (2 - max - min);
+    return [
+      Math.round(h),
+      Math.round(s * 100),
+      Math.round(l * 100)
+    ];
+}
 
 setInterval(() => {
+    appContainer.style.boxShadow = `0 0 50px 0 rgba(${redSlider.value},${greenSlider.value},${blueSlider.value}, ${0.5})`;
     // updates header with current slider values
     header.style.background = `rgb(${redSlider.value},${greenSlider.value},${blueSlider.value})`;
     // Red
@@ -50,8 +97,22 @@ setInterval(() => {
 
         shades[i].style.background = `rgba(${redSlider.value},${greenSlider.value},${blueSlider.value}, ${alpha})`;
         // shades[i].innerHTML = `rgba(${redSlider.value},${greenSlider.value},${blueSlider.value}, ${alpha.toFixed(1)})`;
+
+        tones[i].style.background = `rgba(${redSlider.value},${greenSlider.value},${blueSlider.value}, ${alpha})`;
+
         alpha -= 0.1;
     }
+
+    state.style.background = `rgba(${redSlider.value},${greenSlider.value},${blueSlider.value}, ${0.2})`;
+
+    r.innerHTML = "R : " + redSlider.value;
+    g.innerHTML = "G : " + greenSlider.value;
+    b.innerHTML = "B : " + blueSlider.value;
+
+    h.innerHTML = "H : " + rgbToHsl(redSlider.value, greenSlider.value, blueSlider.value)[0];
+    s.innerHTML = "S : " + rgbToHsl(redSlider.value, greenSlider.value, blueSlider.value)[1]+"%";
+    l.innerHTML = "L : " + rgbToHsl(redSlider.value, greenSlider.value, blueSlider.value)[2]+"%";
+
 }, 10);
 
 
