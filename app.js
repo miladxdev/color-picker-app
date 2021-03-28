@@ -22,7 +22,7 @@ const h = document.getElementById("h");
 const s = document.getElementById("s");
 const l = document.getElementById("l");
 
-// functions to convert RGB color to HEX color
+// functions to convert colors
 function rgbToHex(r, g, b) {
     r = Number(r).toString(16);
     g = Number(g).toString(16);
@@ -34,8 +34,6 @@ function rgbToHex(r, g, b) {
 
     return '#' + r + g + b;
 };
-
-
 
 function rgbToHsl(red, green, blue) {
     red = red < 0 ? 0 : red > 255 ? 255 : red;
@@ -70,8 +68,6 @@ function rgbToHsl(red, green, blue) {
       Math.round(l * 100)
     ];
 }
-
-
 
 setInterval(() => {
     // updates header with current slider values

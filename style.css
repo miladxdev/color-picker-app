@@ -166,6 +166,7 @@ background: grey;
     background: #e2e2e2;
 }
 .row {
+    position: relative;
     background: #fafafa;
     padding: 10px;
     border-radius: 10px;
@@ -173,6 +174,41 @@ background: grey;
 .row span {
     display: block;
 }
+.row h3 { padding-bottom: 5px; }
+.row #copy-btn {
+    opacity: 0;
+    float:right;
+    width: 20px;
+    height:20px;
+    margin-top: 20px;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: opacity .1s;
+}
+.row #copy-btn:hover {
+    background: #dbdbdb;
+}
+.row:hover #copy-btn {
+    opacity: 1;
+}
+
+.tooltip {
+    position: absolute;
+    top: -38px;
+    right: 10px;
+    /* border: 1px solid red; */
+}
+.tooltip span {
+    opacity: 0;
+    padding: 5px;
+    border-radius: 5px;
+    font-weight: bold;
+    background: rgb(185, 255, 185);
+    color: rgb(30, 80, 30);
+}
+
 /* instagram: web.script
 github: github.com/xcripts
 © 2020 Milad Gharibi.  All rights reserved */
