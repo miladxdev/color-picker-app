@@ -18,8 +18,9 @@ const g = document.getElementById("g");
 const b = document.getElementById("b");
 
 //
-const hsl = document.getElementById("hsl");
-
+const h = document.getElementById("h");
+const s = document.getElementById("s");
+const l = document.getElementById("l");
 
 // functions to convert RGB color to HEX color
 function rgbToHex(r, g, b) {
@@ -65,8 +66,8 @@ function rgbToHsl(red, green, blue) {
     else s = delta / (2 - max - min);
     return [
       Math.round(h),
-      Math.round(s * 100)+"%",
-      Math.round(l * 100)+"%"
+      Math.round(s * 100),
+      Math.round(l * 100)
     ];
 }
 
@@ -106,8 +107,9 @@ setInterval(() => {
     g.innerHTML = "G : " + greenSlider.value;
     b.innerHTML = "B : " + blueSlider.value;
 
-    hsl.innerHTML = rgbToHsl(redSlider.value, greenSlider.value, blueSlider.value);
-
+    h.innerHTML = "H : " + rgbToHsl(redSlider.value, greenSlider.value, blueSlider.value)[0];
+    s.innerHTML = "S : " + rgbToHsl(redSlider.value, greenSlider.value, blueSlider.value)[1]+"%";
+    l.innerHTML = "L : " + rgbToHsl(redSlider.value, greenSlider.value, blueSlider.value)[2]+"%";
 
 }, 10);
 
