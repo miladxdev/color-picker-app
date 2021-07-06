@@ -13,14 +13,13 @@ const rgbElements = document.querySelectorAll(".rgb-colors > span");
 const tints = document.querySelectorAll("#tints > span");
 const shades = document.querySelectorAll("#shades > span");
 const tones = document.querySelectorAll("#tones > span");
-
+// color codes section
 const state = document.getElementById("state");
-//
+// rgb code color
 const r = document.getElementById("r");
 const g = document.getElementById("g");
 const b = document.getElementById("b");
-
-//
+// hsl code color
 const h = document.getElementById("h");
 const s = document.getElementById("s");
 const l = document.getElementById("l");
@@ -67,7 +66,7 @@ function rgbToHsl(red, green, blue) {
   if (max == min) s = 0;
   else if (l <= 0.5) s = delta / (max + min);
   else s = delta / (2 - max - min);
-  return [Math.round(h), Math.round(s * 100), Math.round(l * 100)];
+  return [Math.round(h), Math.round(s * 100), Math.round(l * 100)]; // return  an array
 }
 
 setInterval(() => {
@@ -119,17 +118,42 @@ randomBtn.addEventListener("click", () => {
   blueSlider.value = Math.random() * 255;
 });
 
+function copyStringToClipboard(str) {
+  // Create new element
+  var el = document.createElement("textarea");
+  // Set value (string to be copied)
+  el.value = str;
+  // Set non-editable to avoid focus and move outside of view
+  el.setAttribute("readonly", "");
+  el.style = { position: "absolute", left: "-9999px" };
+  document.body.appendChild(el);
+  // Select text inside element
+  el.select();
+  // Copy text to clipboard
+  document.execCommand("copy");
+  // Remove temporary element
+  document.body.removeChild(el);
+}
+
 const colorCodeElems = document.querySelectorAll(".color-code");
 const toolTipElems = document.querySelectorAll(".tooltip span");
 for (let i = 0; i < colorCodeElems.length; i++) {
   colorCodeElems[i].addEventListener("click", function (e) {
-    // console.log(toolTipElems[i]);
+    if (i === 0) {
+      copyStringToClipboard(`${redSlider.value},${greenSlider.value},${blueSlider.value}`);
+    } else if (i === 1) {
+      copyStringToClipboard(hexElement.innerHTML);
+    } else {
+      copyStringToClipboard(rgbToHsl(redSlider.value, greenSlider.value, blueSlider.value));
+    }
+    // toggle tooltip opacity
     toolTipElems[i].style.opacity = 1;
     setTimeout(() => {
       toolTipElems[i].style.opacity = 0;
     }, 1000);
   });
 }
+
 // instagram: web.script
 // github: github.com/xcripts
 // © 2020 Milad Gharibi. All rights reserved
