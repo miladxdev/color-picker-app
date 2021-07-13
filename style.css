@@ -3,12 +3,11 @@ html {
 }
 
 * {
-  /* border: 1px dashed blue; */
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
-/* to cener ver & hor, inner elements or text */
+
 .fcc {
   display: flex;
   justify-content: center;
@@ -19,16 +18,18 @@ body {
   background: #e5ecf5;
   height: 100vh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   font-family: "@Microsoft Yahei Ui Light";
 }
 
 #app-container {
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 30px;
+  border-radius: 40px;
   overflow: hidden;
 }
 
@@ -64,6 +65,7 @@ body {
 }
 
 .main {
+  position: relative;
   padding: 20px;
   height: 50%;
   display: flex;
@@ -130,8 +132,8 @@ input#blue::-webkit-slider-thumb {
 }
 .rgb-colors span {
   width: 100px;
-  height: 50px;
-  border-radius: 10px;
+  height: 30px;
+  border-radius: 4px;
   background: #e4ebf5;
   opacity: 0.7;
 }
@@ -142,16 +144,17 @@ input#blue::-webkit-slider-thumb {
   display: grid;
   grid-template-columns: 1;
   grid-template-rows: 10;
-  width: 100px;
+  width: 80px;
   height: 600px;
   font-size: 12px;
   color: white;
-  text-shadow: 0 0 5px black;
+  text-shadow: 0 0 2px grey;
 }
 #shades {
   background: #000000;
 }
 #tones {
+  border-radius: 40px 0 0 40px;
   background: grey;
 }
 
@@ -190,7 +193,7 @@ input#blue::-webkit-slider-thumb {
   cursor: pointer;
 }
 .color-code:active {
-  box-shadow: 0 0 8px lightgreen;
+  box-shadow: 0 0 26px hsl(120, 73%, 90%);
 }
 
 .tooltip {
@@ -210,15 +213,55 @@ input#blue::-webkit-slider-thumb {
 }
 
 .fullscreen-color {
-  display: none;
   position: absolute;
-  background: red;
-  top: 0;
+  top: 100%;
   right: 0;
   bottom: 0;
   left: 0;
+  transition: 0.4s;
+  overflow: hidden;
 }
 
-/* instagram: web.script
-github: github.com/xcripts
-© 2020 Milad Gharibi.  All rights reserved */
+.fullscreen-hex {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 60px;
+  color: white;
+  background: rgba(0, 0, 0, 0.2);
+  opacity: 0.6;
+}
+.btn {
+  display: inline-block;
+  padding: 8px 10px;
+  border-radius: 4px;
+  text-align: center;
+  background: rgba(18, 18, 18, 0.2);
+  color: whitesmoke;
+  cursor: pointer;
+  transition: background 0.3s;
+  opacity: 0.7;
+}
+.btn:hover {
+  background: rgba(18, 18, 18, 0.4);
+}
+.btn:active {
+  transform: scale(0.97);
+}
+
+.btn-circle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border-radius: 50%;
+}
+
+/* 
+  instagram: web.script
+  github: github.com/xcripts
+  © 2021 Milad Gharibi.  All rights reserved 
+*/

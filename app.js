@@ -66,13 +66,15 @@ function rgbToHsl(red, green, blue) {
   if (max == min) s = 0;
   else if (l <= 0.5) s = delta / (max + min);
   else s = delta / (2 - max - min);
-  return [Math.round(h), Math.round(s * 100), Math.round(l * 100)]; // return  an array
+  return [Math.round(h), Math.round(s * 100), Math.round(l * 100)]; // returns an array
 }
 
 setInterval(() => {
-  appContainer.style.boxShadow = `0 0 50px 0 rgba(${redSlider.value},${greenSlider.value},${blueSlider.value}, ${0.5})`;
+  let currentRGB = `${redSlider.value},${greenSlider.value},${blueSlider.value}`;
+  // document.querySelector(".main").style.background = `rgba(${currentRGB}, 0.1)`;
+  // appContainer.style.boxShadow = `0 0 100px 0 rgba(${currentRGB}, ${0.5})`;
   // updates header with current slider values
-  header.style.background = `rgb(${redSlider.value},${greenSlider.value},${blueSlider.value})`;
+  header.style.background = `rgb(${currentRGB})`;
   // Red
   rgbElements[0].innerHTML = redSlider.value;
   rgbElements[0].style.background = `rgb(${redSlider.value}, 0, 0)`;
@@ -89,18 +91,18 @@ setInterval(() => {
   // color tints and shadows
   let alpha = 1;
   for (let i = 0; i < tints.length; i++) {
-    tints[i].style.background = `rgba(${redSlider.value},${greenSlider.value},${blueSlider.value}, ${alpha})`;
+    tints[i].style.background = `rgba(${currentRGB}, ${alpha})`;
     // tints[i].innerHTML = `rgba(${redSlider.value},${greenSlider.value},${blueSlider.value}, ${alpha.toFixed(1)})`;
 
-    shades[i].style.background = `rgba(${redSlider.value},${greenSlider.value},${blueSlider.value}, ${alpha})`;
+    shades[i].style.background = `rgba(${currentRGB}, ${alpha})`;
     // shades[i].innerHTML = `rgba(${redSlider.value},${greenSlider.value},${blueSlider.value}, ${alpha.toFixed(1)})`;
 
-    tones[i].style.background = `rgba(${redSlider.value},${greenSlider.value},${blueSlider.value}, ${alpha})`;
+    tones[i].style.background = `rgba(${currentRGB}, ${alpha})`;
 
     alpha -= 0.1;
   }
 
-  state.style.background = `rgba(${redSlider.value},${greenSlider.value},${blueSlider.value}, ${0.2})`;
+  state.style.background = `rgba(${currentRGB}, ${0.2})`;
 
   r.innerHTML = "R : " + redSlider.value;
   g.innerHTML = "G : " + greenSlider.value;
@@ -109,6 +111,8 @@ setInterval(() => {
   h.innerHTML = "H : " + rgbToHsl(redSlider.value, greenSlider.value, blueSlider.value)[0];
   s.innerHTML = "S : " + rgbToHsl(redSlider.value, greenSlider.value, blueSlider.value)[1] + "%";
   l.innerHTML = "L : " + rgbToHsl(redSlider.value, greenSlider.value, blueSlider.value)[2] + "%";
+
+  // document.body.style.background = `rgba(${currentRGB}, 0.2)`;
 }, 10);
 
 // Generates a random color
@@ -135,6 +139,7 @@ function copyStringToClipboard(str) {
   document.body.removeChild(el);
 }
 
+// copy colour code to clipboard
 const colorCodeElems = document.querySelectorAll(".color-code");
 const toolTipElems = document.querySelectorAll(".tooltip span");
 for (let i = 0; i < colorCodeElems.length; i++) {
@@ -153,6 +158,21 @@ for (let i = 0; i < colorCodeElems.length; i++) {
     }, 1000);
   });
 }
+
+const fullscreenColor = document.querySelector(".fullscreen-color");
+const closeBtn = document.querySelector("#close-btn");
+const fullscreenHex = document.querySelector(".fullscreen-hex");
+header.addEventListener("click", function (e) {
+  if (e.target == this) {
+    fullscreenColor.style.background = `rgb(${redSlider.value},${greenSlider.value},${blueSlider.value})`;
+    fullscreenColor.style.top = "0";
+    fullscreenHex.innerHTML = hexElement.innerHTML;
+  }
+});
+closeBtn.addEventListener("click", () => {
+  fullscreenColor.style.top = "100%";
+  // closeBtn.style.display = "none";
+});
 
 // instagram: web.script
 // github: github.com/xcripts
