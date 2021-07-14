@@ -14,52 +14,56 @@
     />
   </head>
   <body>
+    <!-- <div class="flex-container"> -->
+
     <div id="app-container">
-      <div class="tones" id="tones">
-        <span>Tones</span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
+      <div class="color-shades">
+        <div class="tones" id="tones">
+          <span>Tones</span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div id="shades">
+          <span>Shades</span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div class="tints" id="tints">
+          <span>Tints</span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
       </div>
-
-      <div id="shades">
-        <span>Shades</span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-
-      <div class="tints" id="tints">
-        <span>Tints</span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-
       <div class="color-pick">
         <div id="header">
-          <div class="btn btn-circle fcc" id="rnd"><i class="fa fa-repeat"></i></div>
+          <div class="header-icons">
+            <div class="btn btn-circle fcc" id="rnd"><i class="fa fa-repeat"></i></div>
+            <div class="btn btn-circle fcc" id="save"><i class="fa fa-heart"></i></div>
+          </div>
         </div>
         <div class="main">
           <div class="range-sliders">
@@ -74,7 +78,6 @@
           </div>
         </div>
       </div>
-
       <div class="state" id="state">
         <div class="row color-code">
           <h3>RGB</h3>
@@ -102,12 +105,15 @@
           </div>
         </div>
       </div>
-    </div>
 
-    <div class="fullscreen-color">
-      <div class="btn btn-circle fcc" id="close-btn" style="margin: 20px"><i class="fa fa-times"></i></div>
-      <div class="fullscreen-hex"></div>
+      <div class="fave-color-container"></div>
+
+      <div class="fullscreen-color">
+        <div class="btn btn-circle fcc" id="close-btn" style="margin: 20px"><i class="fa fa-times"></i></div>
+        <div class="fullscreen-hex"></div>
+      </div>
     </div>
+    <!-- </div> -->
 
     <script src="app.js"></script>
   </body>

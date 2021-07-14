@@ -1,3 +1,5 @@
+const selectElem = (e) => document.querySelector(e);
+
 const appContainer = document.getElementById("app-container");
 // elements in header
 const header = document.getElementById("header");
@@ -103,7 +105,7 @@ setInterval(() => {
   }
 
   state.style.background = `rgba(${currentRGB}, ${0.2})`;
-
+  selectElem(".fave-color-container").style.background = `rgba(${currentRGB}, ${0.2})`;
   r.innerHTML = "R : " + redSlider.value;
   g.innerHTML = "G : " + greenSlider.value;
   b.innerHTML = "B : " + blueSlider.value;
@@ -174,6 +176,40 @@ closeBtn.addEventListener("click", () => {
   // closeBtn.style.display = "none";
 });
 
+function createFaveColor() {
+  // favecolor div
+  const div = document.createElement("div");
+  div.style.background = `rgb(${redSlider.value},${greenSlider.value},${blueSlider.value})`;
+  div.style.opacity = "0";
+  div.innerHTML = hexElement.innerHTML;
+  div.classList.add("fave-color");
+  setTimeout(() => (div.style.opacity = "1"));
+  selectElem(".fave-color-container").appendChild(div);
+
+  // delete button
+  const span = document.createElement("span");
+  span.innerHTML = "<i class='fa fa-times'></i>";
+  span.classList.add("delete-color");
+  div.appendChild(span);
+
+  div.addEventListener("click", function (e) {
+    if (e.target == this) {
+      copyStringToClipboard(e.target.innerText);
+      fullscreenColor.style.background = e.target.innerText;
+      fullscreenColor.style.top = "0";
+      fullscreenHex.innerHTML = div.innerHTML;
+    }
+  });
+
+  span.addEventListener("click", function () {
+    div.style.opacity = 0;
+    setTimeout(() => div.remove(), 200);
+  });
+}
+
+selectElem("#save").addEventListener("click", () => {
+  createFaveColor();
+});
+
 // instagram: web.script
-// github: github.com/xcripts
-// © 2020 Milad Gharibi. All rights reserved
+// © 2021 Milad Gharibi. All rights reserved
