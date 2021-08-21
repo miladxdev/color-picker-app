@@ -1,4 +1,4 @@
-const selectElem = (e) => document.querySelector(e);
+const element = (e) => document.querySelector(e);
 
 const appContainer = document.getElementById("app-container");
 // elements in header
@@ -37,6 +37,20 @@ function rgbToHex(r, g, b) {
   if (b.length < 2) b = "0" + b;
 
   return "#" + r + g + b;
+}
+
+function hexToRgb(hex) {
+  hex = hex.trim();
+
+  if (hex[0] == "#") {
+    hex = hex.substring(1);
+  }
+
+  let r = parseInt(hex.substr(0, 2), 16);
+  let g = parseInt(hex.substr(2, 2), 16);
+  let b = parseInt(hex.substr(4, 2), 16);
+
+  return [r, g, b];
 }
 
 function rgbToHsl(red, green, blue) {
@@ -105,7 +119,7 @@ setInterval(() => {
   }
 
   state.style.background = `rgba(${currentRGB}, ${0.2})`;
-  selectElem(".fave-color-container").style.background = `rgba(${currentRGB}, ${0.2})`;
+  element(".fave-color-container").style.background = `rgba(${currentRGB}, ${0.2})`;
   r.innerHTML = "R : " + redSlider.value;
   g.innerHTML = "G : " + greenSlider.value;
   b.innerHTML = "B : " + blueSlider.value;
@@ -184,7 +198,7 @@ function createFaveColor(color) {
   div.innerHTML = color;
   div.classList.add("fave-color");
   setTimeout(() => (div.style.opacity = "1"));
-  selectElem(".fave-color-container").appendChild(div);
+  element(".fave-color-container").appendChild(div);
 
   // delete button
   const span = document.createElement("span");
@@ -217,12 +231,19 @@ for (const [key, value] of Object.entries(localStorage)) {
   createFaveColor(value);
 }
 
-selectElem("#save").addEventListener("click", () => {
+element("#save").addEventListener("click", () => {
   createFaveColor(hexElement.innerHTML);
 });
 
-// selectElem("#load-btn").addEventListener("click", () => {
+element("#view-btn").addEventListener("click", () => {
+  const savedHex = element(".fullscreen-hex").innerText;
 
-// });
+  redSlider.value = hexToRgb(savedHex)[0];
+  greenSlider.value = hexToRgb(savedHex)[1];
+  blueSlider.value = hexToRgb(savedHex)[2];
+
+  fullscreenColor.style.top = "100%";
+});
+
 // instagram: web.script
 // © 2021 Milad Gharibi. All rights reserved
