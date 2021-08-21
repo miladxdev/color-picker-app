@@ -73,8 +73,8 @@ function rgbToHsl(red, green, blue) {
 
 setInterval(() => {
   let currentRGB = `${redSlider.value},${greenSlider.value},${blueSlider.value}`;
-  // document.querySelector(".main").style.background = `rgba(${currentRGB}, 0.1)`;
-  // appContainer.style.boxShadow = `0 0 100px 0 rgba(${currentRGB}, ${0.5})`;
+  // selectElem(".main").style.background = `rgba(${currentRGB}, 0.1)`;
+  appContainer.style.boxShadow = `0 0 50px 0 rgba(${currentRGB}, ${0.5})`;
   // updates header with current slider values
   header.style.background = `rgb(${currentRGB})`;
   // Red
@@ -176,12 +176,12 @@ closeBtn.addEventListener("click", () => {
   // closeBtn.style.display = "none";
 });
 
-function createFaveColor() {
+function createFaveColor(color) {
   // favecolor div
   const div = document.createElement("div");
-  div.style.background = `rgb(${redSlider.value},${greenSlider.value},${blueSlider.value})`;
+  div.style.background = color;
   div.style.opacity = "0";
-  div.innerHTML = hexElement.innerHTML;
+  div.innerHTML = color;
   div.classList.add("fave-color");
   setTimeout(() => (div.style.opacity = "1"));
   selectElem(".fave-color-container").appendChild(div);
@@ -204,12 +204,25 @@ function createFaveColor() {
   span.addEventListener("click", function () {
     div.style.opacity = 0;
     setTimeout(() => div.remove(), 200);
+    localStorage.removeItem(this.parentNode.innerText);
   });
+
+  localStorage.setItem(color, color);
+  // localStorage.clear();
+}
+
+// load saved colors from local storage
+for (const [key, value] of Object.entries(localStorage)) {
+  // console.log(key, value);
+  createFaveColor(value);
 }
 
 selectElem("#save").addEventListener("click", () => {
-  createFaveColor();
+  createFaveColor(hexElement.innerHTML);
 });
 
+// selectElem("#load-btn").addEventListener("click", () => {
+
+// });
 // instagram: web.script
 // © 2021 Milad Gharibi. All rights reserved

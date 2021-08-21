@@ -37,7 +37,6 @@ body {
   justify-content: center;
   align-items: center;
   border-radius: 40px;
-
   overflow: hidden;
   align-items: center;
 }
@@ -279,6 +278,11 @@ input#blue::-webkit-slider-thumb {
   border-radius: 50%;
 }
 
+.fullscreen-color .btn {
+  display: inline-block;
+  margin: 20px 0 0 20px;
+}
+
 .fave-color-container {
   width: 150px;
   /* width: 800px; */
@@ -330,6 +334,7 @@ input#blue::-webkit-slider-thumb {
 ::-webkit-scrollbar-thumb {
   background: rgba(255, 255, 255, 0.6);
 }
+
 /* 
   instagram: web.script
   github: github.com/xcripts
