@@ -26,6 +26,11 @@ const h = document.getElementById("h");
 const s = document.getElementById("s");
 const l = document.getElementById("l");
 
+// random color after page loads
+redSlider.value = Math.random() * 255;
+greenSlider.value = Math.random() * 255;
+blueSlider.value = Math.random() * 255;
+
 // functions to convert colors
 function rgbToHex(r, g, b) {
   r = Number(r).toString(16);
@@ -88,7 +93,7 @@ function rgbToHsl(red, green, blue) {
 setInterval(() => {
   let currentRGB = `${redSlider.value},${greenSlider.value},${blueSlider.value}`;
   // selectElem(".main").style.background = `rgba(${currentRGB}, 0.1)`;
-  appContainer.style.boxShadow = `0 0 50px 0 rgba(${currentRGB}, ${0.5})`;
+  appContainer.style.boxShadow = `0 0 100px 0 rgba(${currentRGB}, ${0.6})`;
   // updates header with current slider values
   header.style.background = `rgb(${currentRGB})`;
   // Red

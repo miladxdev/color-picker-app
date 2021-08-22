@@ -246,6 +246,8 @@ input#blue::-webkit-slider-thumb {
   transform: translate(-50%, -50%);
   font-size: 60px;
   color: white;
+  border-radius: 10px;
+  padding: 2px 8px;
   background: rgba(0, 0, 0, 0.2);
   opacity: 0.6;
 }
@@ -255,14 +257,14 @@ input#blue::-webkit-slider-thumb {
   color: whitesmoke;
   cursor: pointer;
   transition: background 0.3s;
-  opacity: 0.7;
+  opacity: 0.5;
   width: 40px;
   height: 40px;
   padding: 0;
   border-radius: 50%;
 }
 .btn:hover {
-  background: rgba(18, 18, 18, 0.4);
+  background: rgba(18, 18, 18, 0.6);
 }
 .btn:active {
   transform: scale(0.97);
@@ -304,13 +306,13 @@ input#blue::-webkit-slider-thumb {
 
 .delete-color {
   display: block;
-  width: 20px;
-  height: 20px;
+  width: 30px;
+  height: 30px;
   font-size: 14px;
   text-shadow: none;
-  color: rgba(255, 0, 0, 0.6);
+  color: rgba(231, 40, 40, 0.6);
   border-radius: 50px;
-  background: rgba(255, 2555, 255, 0.2);
+  background: rgba(255, 255, 255, 0.2);
   display: flex;
   justify-content: center;
   align-items: center;
