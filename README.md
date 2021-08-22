@@ -58,7 +58,7 @@
 
 ## About The Project
 
-![screenshot](img/screenshot.png)
+![screenshot](./img/screenshot.png)
 
 - [Live Demo](https://miladxdev.github.io/color-tool-app)
 
