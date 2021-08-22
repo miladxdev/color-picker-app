@@ -9,7 +9,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/miladxdev/color-tool-app">
-    <img src="img/logo.png" alt="Logo" width="100" height="100">
+    <img src="img/logo.png" alt="Logo" width="140" height="140">
   </a>
 
   <h3 align="center">COLOR TOOL APP</h3>
@@ -58,7 +58,7 @@
 
 ## About The Project
 
-![Product Name Screen Shot][product-screenshot]
+![screenshot](img/screenshot.png)
 
 - [Live Demo](https://miladxdev.github.io/color-tool-app)
 
