@@ -92,7 +92,6 @@ function rgbToHsl(red, green, blue) {
 
 setInterval(() => {
   let currentRGB = `${redSlider.value},${greenSlider.value},${blueSlider.value}`;
-  // selectElem(".main").style.background = `rgba(${currentRGB}, 0.1)`;
   appContainer.style.boxShadow = `0 0 40px 0 rgba(${currentRGB}, ${0.5})`;
   // updates header with current slider values
   header.style.background = `rgb(${currentRGB})`;
