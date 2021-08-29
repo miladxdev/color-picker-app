@@ -213,15 +213,22 @@ input#blue::-webkit-slider-thumb {
   box-shadow: 0 0 26px hsl(120, 73%, 90%);
 }
 
+#mycolor-input {
+  border: #aaaaaa;
+  border-radius: 8px;
+  width: 100%;
+  padding: 4px;
+  font-size: 16px;
+}
 .tooltip {
   position: absolute;
-  top: -38px;
-  right: 10px;
+  top: -27px;
+  right: 0px;
   /* border: 1px solid red; */
 }
 .tooltip span {
   opacity: 0;
-  padding: 5px;
+  padding: 2px 4px;
   border-radius: 5px;
   font-weight: bold;
   background: rgb(185, 255, 185);

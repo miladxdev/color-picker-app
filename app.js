@@ -249,5 +249,13 @@ element("#view-btn").addEventListener("click", () => {
   fullscreenColor.style.top = "100%";
 });
 
+// search hex color on input change
+element("#mycolor-input").onchange = function () {
+  const myHex = this.value;
+  redSlider.value = hexToRgb(myHex)[0];
+  greenSlider.value = hexToRgb(myHex)[1];
+  blueSlider.value = hexToRgb(myHex)[2];
+};
+
 // instagram: web.script
 // © 2021 Milad Gharibi. All rights reserved
