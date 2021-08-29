@@ -62,7 +62,7 @@
 
 - [Live Demo](https://miladxdev.github.io/color-tool-app)
 
-this Singel page application alows you to pick RGB colors and get RGB/HEX/HSL color codes and save your favorite color locally.
+This singel page application alows you to pick RGB colors and then get RGB/HEX/HSL color codes and save your favorite color locally.
 
 ### Built With
 
