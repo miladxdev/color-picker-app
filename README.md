@@ -143,4 +143,4 @@ Project Link: [https://github.com/miladxdev/color-tool-app](https://github.com/m
 [license-url]: https://github.com/miladxdev/color-tool-app/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/milad-gharibi-507ba3214/
-[product-screenshot]: img/screenshot.png
+[product-screenshot]: img\screenshot.png
