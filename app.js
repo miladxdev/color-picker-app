@@ -112,10 +112,8 @@ setInterval(() => {
   let alpha = 1;
   for (let i = 0; i < tints.length; i++) {
     tints[i].style.background = `rgba(${currentRGB}, ${alpha})`;
-    // tints[i].innerHTML = `rgba(${redSlider.value},${greenSlider.value},${blueSlider.value}, ${alpha.toFixed(1)})`;
 
     shades[i].style.background = `rgba(${currentRGB}, ${alpha})`;
-    // shades[i].innerHTML = `rgba(${redSlider.value},${greenSlider.value},${blueSlider.value}, ${alpha.toFixed(1)})`;
 
     tones[i].style.background = `rgba(${currentRGB}, ${alpha})`;
 
@@ -221,7 +219,7 @@ function createFaveColor(color) {
 
   span.addEventListener("click", function () {
     div.style.opacity = 0;
-    setTimeout(() => div.remove(), 200);
+    setTimeout(() => div.remove(), 240);
     localStorage.removeItem(this.parentNode.innerText);
   });
 
@@ -231,11 +229,14 @@ function createFaveColor(color) {
 
 // load saved colors from local storage
 for (const [key, value] of Object.entries(localStorage)) {
-  // console.log(key, value);
   createFaveColor(value);
 }
 
 element("#save").addEventListener("click", () => {
+  // check duplicates
+  for (const [key, value] of Object.entries(localStorage)) {
+    if (value === hexElement.innerHTML) return;
+  }
   createFaveColor(hexElement.innerHTML);
 });
 
