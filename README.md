@@ -9,7 +9,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/miladxdev/color-tool-app">
-    <img src="img/logo.png" alt="Logo" width="140" height="140">
+    <img src="img/logo.png" alt="Logo" width="120" height="120">
   </a>
 
   <h3 align="center">COLOR TOOL APP</h3>
@@ -58,11 +58,11 @@
 
 ## About The Project
 
-![screenshot][product-screenshot]
+![screenshot](./img/screenshot.png)
 
-- [Live Demo](https://miladxdev.github.io/color-tool-app)
+- [LIVE DEMO »](https://miladxdev.github.io/color-tool-app)
 
-This singel page application alows you to pick RGB colors and then get RGB/HEX/HSL color codes and save your favorite color locally.
+This singel page application alows you to pick RGB colors and then get RGB/HEX/HSL color codes and also save your favorite color locally.
 
 ### Built With
 
@@ -82,10 +82,7 @@ No need
 
 <!-- USAGE EXAMPLES -->
 
-## Usage
-
-...
-
+<hr>
 <!-- ROADMAP -->
 
 ## Roadmap
@@ -143,4 +140,3 @@ Project Link: [https://github.com/miladxdev/color-tool-app](https://github.com/m
 [license-url]: https://github.com/miladxdev/color-tool-app/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/milad-gharibi-507ba3214/
-[product-screenshot]: img/screenshot.png

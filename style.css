@@ -8,7 +8,7 @@ html {
   padding: 0;
 }
 
-.fcc {
+.center {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -22,13 +22,6 @@ body {
   justify-content: center;
   align-items: center;
   font-family: "@Microsoft Yahei Ui Light";
-}
-
-.flex-container {
-  /* border: 1px dashed blue; */
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
 }
 
 #app-container {
@@ -54,7 +47,6 @@ body {
   padding: 20px;
 }
 .header-icons {
-  /* border: 1px solid red; */
   font-size: 20x;
   display: flex;
 }
@@ -119,8 +111,8 @@ input.slider::-webkit-slider-thumb {
   cursor: grab;
 }
 input.slider::-webkit-slider-thumb:hover {
-  width: 30px;
-  height: 30px;
+  width: 34px;
+  height: 34px;
 }
 
 input#red::-webkit-slider-thumb {
@@ -219,9 +211,10 @@ input#blue::-webkit-slider-thumb {
 
 #mycolor-input {
   border: #aaaaaa;
-  border-radius: 8px;
+  border-radius: 4px;
   width: 100%;
   padding: 4px;
+  margin-bottom: 6px;
   font-size: 16px;
 }
 .tooltip {
@@ -263,14 +256,15 @@ input#blue::-webkit-slider-thumb {
 }
 
 .btn {
-  background: rgba(18, 18, 18, 0.2);
+  background: rgba(0, 0, 0, 0.1);
   color: whitesmoke;
   cursor: pointer;
   transition: background 0.3s;
-  opacity: 0.5;
-  width: 40px;
-  height: 40px;
+  font-size: 16px;
+  width: 35px;
+  height: 35px;
   padding: 0;
+  opacity: 0.8;
   border-radius: 50%;
 }
 .btn:hover {
@@ -320,16 +314,18 @@ input#blue::-webkit-slider-thumb {
   height: 30px;
   font-size: 14px;
   text-shadow: none;
-  color: rgba(231, 40, 40, 0.6);
+  color: rgb(255, 110, 110);
   border-radius: 50px;
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(250, 250, 250, 0.7);
   display: flex;
   justify-content: center;
   align-items: center;
   opacity: 0;
-  transition: opacity 0.2s;
+  transition: opacity 0.2s, background 0.2s;
 }
-
+.delete-color:hover {
+  background-color: #fafafa;
+}
 ::-webkit-scrollbar {
   width: 8px;
 }

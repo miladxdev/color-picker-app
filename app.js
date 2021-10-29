@@ -1,6 +1,5 @@
 const element = (e) => document.querySelector(e);
 
-const appContainer = document.getElementById("app-container");
 // elements in header
 const header = document.getElementById("header");
 const hexElement = document.getElementById("hex");
@@ -10,7 +9,7 @@ const redSlider = document.getElementById("red");
 const greenSlider = document.getElementById("green");
 const blueSlider = document.getElementById("blue");
 // R span + G span + B span
-const rgbElements = document.querySelectorAll(".rgb-colors > span");
+const rgbSpans = document.querySelectorAll(".rgb-colors > span");
 // all span elements in #tints and #shadows
 const tints = document.querySelectorAll("#tints > span");
 const shades = document.querySelectorAll("#shades > span");
@@ -92,18 +91,23 @@ function rgbToHsl(red, green, blue) {
 
 setInterval(() => {
   let currentRGB = `${redSlider.value},${greenSlider.value},${blueSlider.value}`;
-  appContainer.style.boxShadow = `0 0 40px 0 rgba(${currentRGB}, ${0.5})`;
+  // slider gradient background
+  redSlider.style.backgroundImage = `linear-gradient(to right, rgba(0,${greenSlider.value},${blueSlider.value}, 0.4), rgba(255,${greenSlider.value},${blueSlider.value}, 0.4)`;
+  greenSlider.style.backgroundImage = `linear-gradient(to right, rgba(${redSlider.value},0,${blueSlider.value}, 0.4), rgba(${redSlider.value},255,${blueSlider.value}, 0.4)`;
+  blueSlider.style.backgroundImage = `linear-gradient(to right, rgba(${redSlider.value},${greenSlider.value},0, 0.4), rgba(${redSlider.value},${greenSlider.value},255, 0.4)`;
+
+  element("#app-container").style.boxShadow = `0 0 40px 0 rgba(${currentRGB}, ${0.4})`;
   // updates header with current slider values
   header.style.background = `rgb(${currentRGB})`;
   // Red
-  rgbElements[0].innerHTML = redSlider.value;
-  rgbElements[0].style.background = `rgb(${redSlider.value}, 0, 0)`;
+  rgbSpans[0].innerHTML = redSlider.value;
+  rgbSpans[0].style.background = `rgb(${redSlider.value}, 0, 0)`;
   // green
-  rgbElements[1].innerHTML = greenSlider.value;
-  rgbElements[1].style.background = `rgb(0, ${greenSlider.value}, 0)`;
+  rgbSpans[1].innerHTML = greenSlider.value;
+  rgbSpans[1].style.background = `rgb(0, ${greenSlider.value}, 0)`;
   // blue
-  rgbElements[2].innerHTML = blueSlider.value;
-  rgbElements[2].style.background = `rgb(0, 0, ${blueSlider.value})`;
+  rgbSpans[2].innerHTML = blueSlider.value;
+  rgbSpans[2].style.background = `rgb(0, 0, ${blueSlider.value})`;
 
   // displays hex color code
   hexElement.innerHTML = rgbToHex(redSlider.value, greenSlider.value, blueSlider.value);
@@ -141,19 +145,13 @@ randomBtn.addEventListener("click", () => {
 });
 
 function copyStringToClipboard(str) {
-  // Create new element
   var el = document.createElement("textarea");
-  // Set value (string to be copied)
   el.value = str;
-  // Set non-editable to avoid focus and move outside of view
   el.setAttribute("readonly", "");
   el.style = { position: "absolute", left: "-9999px" };
   document.body.appendChild(el);
-  // Select text inside element
   el.select();
-  // Copy text to clipboard
   document.execCommand("copy");
-  // Remove temporary element
   document.body.removeChild(el);
 }
 
