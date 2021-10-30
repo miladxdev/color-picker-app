@@ -8,28 +8,28 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="https://github.com/miladxdev/color-tool-app">
+  <a href="https://github.com/miladxdev/color-picker-app">
     <img src="img/logo.png" alt="Logo" width="120" height="120">
   </a>
 
-  <h3 align="center">COLOR TOOL APP</h3>
+  <h3 align="center">COLOR PICKER APP</h3>
 
   <p align="center">
     Pick and save your favorite color
     <br />
-    <a href="https://github.com/miladxdev/color-tool-app"><strong>Live preview »</strong></a>
+    <a href="https://github.com/miladxdev/color-picker-app"><strong>Live preview »</strong></a>
     <br />
     <br />
-    <a href="https://miladxdev.github.io/color-tool-app">View Demo</a>
+    <a href="https://miladxdev.github.io/color-picker-app">View Demo</a>
     ·
-    <a href="https://github.com/miladxdev/color-tool-app/issues">Report Bug</a>
+    <a href="https://github.com/miladxdev/color-picker-app/issues">Report Bug</a>
     ·
-    <a href="https://github.com/miladxdev/color-tool-app/issues">Request Feature</a>
+    <a href="https://github.com/miladxdev/color-picker-app/issues">Request Feature</a>
   </p>
 </p>
 
 <!-- TABLE OF CONTENTS -->
-<details open="open">
+<details>
   <summary>Table of Contents</summary>
   <ol>
     <li>
@@ -58,36 +58,26 @@
 
 ## About The Project
 
+`screenshot`
+
 ![screenshot](./img/Screenshot.png)
 
-- [LIVE DEMO »](https://miladxdev.github.io/color-tool-app)
+### [LIVE DEMO ☝](https://miladxdev.github.io/color-picker-app)
 
-This singel page application alows you to pick RGB colors and then get RGB/HEX/HSL color codes and also save your favorite color locally.
+This singel page application alows you to pick RGB colors and then get RGB/HEX/HSL color codes and also save your favorite color locally. 🎨
 
 ### Built With
 
-- HTML
-- CSS
-- JAVASCRIPT
-
-<!-- GETTING STARTED -->
-
-### Prerequisites
-
-No Prerequisites
-
-### Installation
-
-No need
-
-<!-- USAGE EXAMPLES -->
+- `HTML`
+- `CSS`
+- `JAVASCRIPT`
 
 <hr>
 <!-- ROADMAP -->
 
 ## Roadmap
 
-See the [open issues](https://github.com/miladxdev/color-tool-app/issues) for a list of proposed features (and known issues).
+See the [open issues](https://github.com/miladxdev/color-picker-app/issues) for a list of proposed features (and known issues).
 
 <!-- CONTRIBUTING -->
 
@@ -111,9 +101,9 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 ## Contact
 
-Milad Gharibi - [@your_twitter](https://twitter.com/your_username) - email@example.com
+Milad Gharibi - [@twitter](https://twitter.com/your_username) - miladxgh@gmail.com
 
-Project Link: [https://github.com/miladxdev/color-tool-app](https://github.com/miladxdev/color-tool-app)
+Project Link: [https://github.com/miladxdev/color-picker-app](https://github.com/miladxdev/color-picker-app)
 
 <!-- ACKNOWLEDGEMENTS -->
 
@@ -128,15 +118,15 @@ Project Link: [https://github.com/miladxdev/color-tool-app](https://github.com/m
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 
-[contributors-shield]: https://img.shields.io/github/contributors/miladxdev/color-tool-app.svg?style=for-the-badge
-[contributors-url]: https://github.com/miladxdev/color-tool-app/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/miladxdev/color-tool-app.svg?style=for-the-badge
-[forks-url]: https://github.com/miladxdev/color-tool-app/network/members
-[stars-shield]: https://img.shields.io/github/stars/miladxdev/color-tool-app.svg?style=for-the-badge
-[stars-url]: https://github.com/miladxdev/color-tool-app/stargazers
-[issues-shield]: https://img.shields.io/github/issues/miladxdev/color-tool-app.svg?style=for-the-badge
-[issues-url]: https://github.com/miladxdev/color-tool-app/issues
-[license-shield]: https://img.shields.io/github/license/miladxdev/color-tool-app.svg?style=for-the-badge
-[license-url]: https://github.com/miladxdev/color-tool-app/blob/master/LICENSE.txt
+[contributors-shield]: https://img.shields.io/github/contributors/miladxdev/color-picker-app.svg?style=for-the-badge
+[contributors-url]: https://github.com/miladxdev/color-picker-app/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/miladxdev/color-picker-app.svg?style=for-the-badge
+[forks-url]: https://github.com/miladxdev/color-picker-app/network/members
+[stars-shield]: https://img.shields.io/github/stars/miladxdev/color-picker-app.svg?style=for-the-badge
+[stars-url]: https://github.com/miladxdev/color-picker-app/stargazers
+[issues-shield]: https://img.shields.io/github/issues/miladxdev/color-picker-app.svg?style=for-the-badge
+[issues-url]: https://github.com/miladxdev/color-picker-app/issues
+[license-shield]: https://img.shields.io/github/license/miladxdev/color-picker-app.svg?style=for-the-badge
+[license-url]: https://github.com/miladxdev/color-picker-app/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/milad-gharibi-507ba3214/
