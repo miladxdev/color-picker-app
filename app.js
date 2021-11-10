@@ -221,20 +221,23 @@ function createFaveColor(color) {
     localStorage.removeItem(this.parentNode.innerText);
   });
 
-  localStorage.setItem(color, color);
+  localStorage.setItem(color, "color");
   // localStorage.clear();
 }
 
 // load saved colors from local storage
 for (const [key, value] of Object.entries(localStorage)) {
-  createFaveColor(value);
+  if (value === "color") {
+    createFaveColor(key);
+  }
 }
 
 element("#save").addEventListener("click", () => {
   // check duplicates
   for (const [key, value] of Object.entries(localStorage)) {
-    if (value === hexElement.innerHTML) return;
+    if (key === hexElement.innerHTML) return;
   }
+
   createFaveColor(hexElement.innerHTML);
 });
 
