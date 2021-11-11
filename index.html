@@ -17,9 +17,9 @@
   <body>
     <div id="app-container">
       <div class="color-shades">
-        <div class="tones" id="tones">
+        <div class="hues" id="hues">
           <span><p>TONES</p></span>
-          <span></span>
+          <span draggable="true"></span>
           <span></span>
           <span></span>
           <span></span>
@@ -63,14 +63,31 @@
         </div>
         <div class="main">
           <div class="range-sliders">
-            <input type="range" min="0" max="255" value="" class="slider" id="red" />
-            <input type="range" min="0" max="255" value="" class="slider" id="green" />
-            <input type="range" min="0" max="255" value="" class="slider" id="blue" />
-          </div>
-          <div class="rgb-colors">
-            <span class="center"></span>
-            <span class="center"></span>
-            <span class="center"></span>
+            <div class="slider-container">
+              <div class="slider-info">
+                <span class="slider-name">RED</span>
+                <span id="red-slider-value">0</span>
+              </div>
+
+              <input type="range" min="0" max="255" value="" class="slider" id="red" />
+            </div>
+
+            <div class="slider-container">
+              <div class="slider-info">
+                <span class="slider-name">GREEN</span>
+                <span id="green-slider-value">0</span>
+              </div>
+              <input type="range" min="0" max="255" value="" class="slider" id="green" />
+            </div>
+
+            <div class="slider-container">
+              <div class="slider-info">
+                <span class="slider-name">BLUE</span>
+                <span id="blue-slider-value">0</span>
+              </div>
+
+              <input type="range" min="0" max="255" value="" class="slider" id="blue" />
+            </div>
           </div>
         </div>
       </div>
@@ -122,7 +139,7 @@
       </div>
     </div>
     <!-- </div> -->
-
+    <script src="convertor.js"></script>
     <script src="app.js"></script>
   </body>
 </html>
