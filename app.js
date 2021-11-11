@@ -8,12 +8,11 @@ const randomBtn = document.getElementById("rnd");
 const redSlider = document.getElementById("red");
 const greenSlider = document.getElementById("green");
 const blueSlider = document.getElementById("blue");
-// R span + G span + B span
-const rgbSpans = document.querySelectorAll(".rgb-colors > span");
+
 // all span elements in #tints and #shadows
-const tints = document.querySelectorAll("#tints > span");
-const shades = document.querySelectorAll("#shades > span");
-const hues = document.querySelectorAll("#hues > span");
+const tints = document.querySelectorAll("#tints span");
+const shades = document.querySelectorAll("#shades span");
+const hues = document.querySelectorAll("#hues span");
 
 // rgb code color
 const r = document.getElementById("r");
@@ -55,13 +54,13 @@ setInterval(() => {
   let alpha = 0;
   for (let i = 0; i < tints.length; i++) {
     tints[i].style.background = shadeColor(currentHEX, alpha * 100);
-    tints[i].innerText = shadeColor(currentHEX, alpha * 100);
+    tints[i].querySelector("p").innerText = shadeColor(currentHEX, alpha * 100);
 
     shades[i].style.background = shadeColor(currentHEX, -alpha * 100);
-    shades[i].innerText = shadeColor(currentHEX, -alpha * 100);
+    shades[i].querySelector("p").innerText = shadeColor(currentHEX, -alpha * 100);
 
     hues[i].style.background = `hsl(${currentHSL.h + alpha * 50}, ${currentHSL.s}%, ${currentHSL.l}% )`;
-    hues[i].innerText = hslToHex(currentHSL.h + alpha * 50, currentHSL.s, currentHSL.l);
+    hues[i].querySelector("p").innerText = hslToHex(currentHSL.h + alpha * 50, currentHSL.s, currentHSL.l);
 
     alpha += 0.1;
   }
