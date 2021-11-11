@@ -13,9 +13,8 @@ const rgbSpans = document.querySelectorAll(".rgb-colors > span");
 // all span elements in #tints and #shadows
 const tints = document.querySelectorAll("#tints > span");
 const shades = document.querySelectorAll("#shades > span");
-const tones = document.querySelectorAll("#tones > span");
-// color codes section
-const state = document.getElementById("state");
+const hues = document.querySelectorAll("#hues > span");
+
 // rgb code color
 const r = document.getElementById("r");
 const g = document.getElementById("g");
@@ -30,111 +29,52 @@ redSlider.value = Math.random() * 255;
 greenSlider.value = Math.random() * 255;
 blueSlider.value = Math.random() * 255;
 
-// functions to convert colors
-function rgbToHex(r, g, b) {
-  r = Number(r).toString(16);
-  g = Number(g).toString(16);
-  b = Number(b).toString(16);
-
-  if (r.length < 2) r = "0" + r;
-  if (g.length < 2) g = "0" + g;
-  if (b.length < 2) b = "0" + b;
-
-  return "#" + r + g + b;
-}
-
-function hexToRgb(hex) {
-  hex = hex.trim();
-
-  if (hex[0] == "#") {
-    hex = hex.substring(1);
-  }
-
-  let r = parseInt(hex.substr(0, 2), 16);
-  let g = parseInt(hex.substr(2, 2), 16);
-  let b = parseInt(hex.substr(4, 2), 16);
-
-  return [r, g, b];
-}
-
-function rgbToHsl(red, green, blue) {
-  red = red < 0 ? 0 : red > 255 ? 255 : red;
-  green = green < 0 ? 0 : green > 255 ? 255 : green;
-  blue = blue < 0 ? 0 : blue > 255 ? 255 : blue;
-
-  var r = red / 255,
-    g = green / 255,
-    b = blue / 255,
-    min = Math.min(r, g, b),
-    max = Math.max(r, g, b),
-    delta = max - min,
-    h,
-    s,
-    l;
-  if (max == min) {
-    h = 0;
-  } else if (r == max) {
-    h = (g - b) / delta;
-  } else if (g == max) {
-    h = 2 + (b - r) / delta;
-  } else if (b == max) {
-    h = 4 + (r - g) / delta;
-  }
-  h = Math.min(h * 60, 360);
-  if (h < 0) h += 360;
-  l = (min + max) / 2;
-  if (max == min) s = 0;
-  else if (l <= 0.5) s = delta / (max + min);
-  else s = delta / (2 - max - min);
-  return [Math.round(h), Math.round(s * 100), Math.round(l * 100)]; // returns an array
-}
-
 setInterval(() => {
   let currentRGB = `${redSlider.value},${greenSlider.value},${blueSlider.value}`;
-  // slider gradient background
-  redSlider.style.backgroundImage = `linear-gradient(to right, rgba(0,${greenSlider.value},${blueSlider.value}, 0.4), rgba(255,${greenSlider.value},${blueSlider.value}, 0.4)`;
-  greenSlider.style.backgroundImage = `linear-gradient(to right, rgba(${redSlider.value},0,${blueSlider.value}, 0.4), rgba(${redSlider.value},255,${blueSlider.value}, 0.4)`;
-  blueSlider.style.backgroundImage = `linear-gradient(to right, rgba(${redSlider.value},${greenSlider.value},0, 0.4), rgba(${redSlider.value},${greenSlider.value},255, 0.4)`;
+  let currentHEX = rgbToHex(redSlider.value, greenSlider.value, blueSlider.value);
+  let currentHSL = rgbToHsl(redSlider.value, greenSlider.value, blueSlider.value);
 
-  element("#app-container").style.boxShadow = `0 0 40px 0 rgba(${currentRGB}, ${0.4})`;
+  // sliders gradient background
+  redSlider.style.backgroundImage = `linear-gradient(to right, rgba(0,${greenSlider.value},${blueSlider.value}, 0.5), rgba(255,${greenSlider.value},${blueSlider.value}, 0.5)`;
+  greenSlider.style.backgroundImage = `linear-gradient(to right, rgba(${redSlider.value},0,${blueSlider.value}, 0.5), rgba(${redSlider.value},255,${blueSlider.value}, 0.5)`;
+  blueSlider.style.backgroundImage = `linear-gradient(to right, rgba(${redSlider.value},${greenSlider.value},0, 0.5), rgba(${redSlider.value},${greenSlider.value},255, 0.5)`;
+
+  element("#app-container").style.boxShadow = `0 0 40px 0 rgba(${currentRGB}, ${0.5})`;
+
   // updates header with current slider values
   header.style.background = `rgb(${currentRGB})`;
-  // Red
-  rgbSpans[0].innerHTML = redSlider.value;
-  rgbSpans[0].style.background = `rgb(${redSlider.value}, 0, 0)`;
-  // green
-  rgbSpans[1].innerHTML = greenSlider.value;
-  rgbSpans[1].style.background = `rgb(0, ${greenSlider.value}, 0)`;
-  // blue
-  rgbSpans[2].innerHTML = blueSlider.value;
-  rgbSpans[2].style.background = `rgb(0, 0, ${blueSlider.value})`;
+
+  element("#red-slider-value").innerText = redSlider.value;
+  element("#green-slider-value").innerText = greenSlider.value;
+  element("#blue-slider-value").innerText = blueSlider.value;
 
   // displays hex color code
-  hexElement.innerHTML = rgbToHex(redSlider.value, greenSlider.value, blueSlider.value);
+  hexElement.innerHTML = currentHEX;
 
   // color tints and shadows
-  let alpha = 1;
+  let alpha = 0;
   for (let i = 0; i < tints.length; i++) {
-    tints[i].style.background = `rgba(${currentRGB}, ${alpha})`;
+    tints[i].style.background = shadeColor(currentHEX, alpha * 100);
+    tints[i].innerText = shadeColor(currentHEX, alpha * 100);
 
-    shades[i].style.background = `rgba(${currentRGB}, ${alpha})`;
+    shades[i].style.background = shadeColor(currentHEX, -alpha * 100);
+    shades[i].innerText = shadeColor(currentHEX, -alpha * 100);
 
-    tones[i].style.background = `rgba(${currentRGB}, ${alpha})`;
+    hues[i].style.background = `hsl(${currentHSL.h + alpha * 50}, ${currentHSL.s}%, ${currentHSL.l}% )`;
+    hues[i].innerText = hslToHex(currentHSL.h + alpha * 50, currentHSL.s, currentHSL.l);
 
-    alpha -= 0.1;
+    alpha += 0.1;
   }
 
-  state.style.background = `rgba(${currentRGB}, ${0.2})`;
-  element(".fave-color-container").style.background = `rgba(${currentRGB}, ${0.2})`;
+  element("#state").style.background = `rgba(${currentRGB}, ${0.3})`;
+  element(".fave-color-container").style.background = `rgba(${currentRGB}, ${0.3})`;
   r.innerHTML = "R : " + redSlider.value;
   g.innerHTML = "G : " + greenSlider.value;
   b.innerHTML = "B : " + blueSlider.value;
 
-  h.innerHTML = "H : " + rgbToHsl(redSlider.value, greenSlider.value, blueSlider.value)[0];
-  s.innerHTML = "S : " + rgbToHsl(redSlider.value, greenSlider.value, blueSlider.value)[1] + "%";
-  l.innerHTML = "L : " + rgbToHsl(redSlider.value, greenSlider.value, blueSlider.value)[2] + "%";
-
-  // document.body.style.background = `rgba(${currentRGB}, 0.2)`;
+  h.innerHTML = "H : " + currentHSL.h;
+  s.innerHTML = "S : " + currentHSL.s + "%";
+  l.innerHTML = "L : " + currentHSL.l + "%";
 }, 10);
 
 // Generates a random color
@@ -244,9 +184,9 @@ element("#save").addEventListener("click", () => {
 element("#view-btn").addEventListener("click", () => {
   const savedHex = element(".fullscreen-hex").innerText;
 
-  redSlider.value = hexToRgb(savedHex)[0];
-  greenSlider.value = hexToRgb(savedHex)[1];
-  blueSlider.value = hexToRgb(savedHex)[2];
+  redSlider.value = hexToRgb(savedHex).r;
+  greenSlider.value = hexToRgb(savedHex).g;
+  blueSlider.value = hexToRgb(savedHex).b;
 
   fullscreenColor.style.top = "100%";
 });
@@ -254,9 +194,9 @@ element("#view-btn").addEventListener("click", () => {
 // search hex color on input change
 element("#mycolor-input").onchange = function () {
   const myHex = this.value;
-  redSlider.value = hexToRgb(myHex)[0];
-  greenSlider.value = hexToRgb(myHex)[1];
-  blueSlider.value = hexToRgb(myHex)[2];
+  redSlider.value = hexToRgb(myHex).r;
+  greenSlider.value = hexToRgb(myHex).g;
+  blueSlider.value = hexToRgb(myHex).b;
 };
 
 // instagram: web.script
