@@ -14,6 +14,21 @@ const tints = document.querySelectorAll("#tints span");
 const shades = document.querySelectorAll("#shades span");
 const hues = document.querySelectorAll("#hues span");
 
+for (let tint of tints) {
+  tint.addEventListener("click", function () {
+    setColor(this.innerText);
+  });
+}
+for (let tint of shades) {
+  tint.addEventListener("click", function () {
+    setColor(this.innerText);
+  });
+}
+for (let tint of hues) {
+  tint.addEventListener("click", function () {
+    setColor(this.innerText);
+  });
+}
 // rgb code color
 const r = document.getElementById("r");
 const g = document.getElementById("g");
@@ -24,9 +39,10 @@ const s = document.getElementById("s");
 const l = document.getElementById("l");
 
 // random color after page loads
-redSlider.value = Math.random() * 255;
-greenSlider.value = Math.random() * 255;
-blueSlider.value = Math.random() * 255;
+
+// redSlider.value = Math.random() * 255;
+// greenSlider.value = Math.random() * 255;
+// blueSlider.value = Math.random() * 255;
 
 setInterval(() => {
   let currentRGB = `${redSlider.value},${greenSlider.value},${blueSlider.value}`;

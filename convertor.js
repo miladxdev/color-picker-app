@@ -93,3 +93,11 @@ function shadeColor(color, percent) {
 
   return "#" + RR + GG + BB;
 }
+
+function setColor(hex) {
+  const rgb = hexToRgb(hex);
+
+  redSlider.value = rgb.r;
+  greenSlider.value = rgb.g;
+  blueSlider.value = rgb.b;
+}
