@@ -1,15 +1,15 @@
 const element = (e) => document.querySelector(e);
 
 // elements in header
-const header = document.getElementById("header");
-const hexElement = document.getElementById("hex");
-const randomBtn = document.getElementById("rnd");
-// slider elements
-const redSlider = document.getElementById("red");
-const greenSlider = document.getElementById("green");
-const blueSlider = document.getElementById("blue");
+const header = element("#header");
+const hexElement = element("#hex");
 
-// all span elements in #tints and #shadows
+// slider elements
+const redSlider = element("#red");
+const greenSlider = element("#green");
+const blueSlider = element("#blue");
+
+// all #hues and #tints and #shadows
 const tints = document.querySelectorAll("#tints span");
 const shades = document.querySelectorAll("#shades span");
 const hues = document.querySelectorAll("#hues span");
@@ -19,11 +19,13 @@ for (let tint of tints) {
     setColor(this.innerText);
   });
 }
+
 for (let tint of shades) {
   tint.addEventListener("click", function () {
     setColor(this.innerText);
   });
 }
+
 for (let tint of hues) {
   tint.addEventListener("click", function () {
     setColor(this.innerText);
@@ -38,12 +40,6 @@ const h = document.getElementById("h");
 const s = document.getElementById("s");
 const l = document.getElementById("l");
 
-// random color after page loads
-
-// redSlider.value = Math.random() * 255;
-// greenSlider.value = Math.random() * 255;
-// blueSlider.value = Math.random() * 255;
-
 setInterval(() => {
   let currentRGB = `${redSlider.value},${greenSlider.value},${blueSlider.value}`;
   let currentHEX = rgbToHex(redSlider.value, greenSlider.value, blueSlider.value);
@@ -54,7 +50,8 @@ setInterval(() => {
   greenSlider.style.backgroundImage = `linear-gradient(to right, rgba(${redSlider.value},0,${blueSlider.value}, 0.5), rgba(${redSlider.value},255,${blueSlider.value}, 0.5)`;
   blueSlider.style.backgroundImage = `linear-gradient(to right, rgba(${redSlider.value},${greenSlider.value},0, 0.5), rgba(${redSlider.value},${greenSlider.value},255, 0.5)`;
 
-  element("#app-container").style.boxShadow = `0 0 40px 0 rgba(${currentRGB}, ${0.5})`;
+  // element("#app-container").style.boxShadow = `0 0 40px 0 rgba(${currentRGB}, ${0.5})`;
+  element("#app-container").style.border = `6px solid rgba(${currentRGB}, ${0.4})`;
 
   // updates header with current slider values
   header.style.background = `rgb(${currentRGB})`;
@@ -83,6 +80,7 @@ setInterval(() => {
 
   element("#state").style.background = `rgba(${currentRGB}, ${0.3})`;
   element(".fave-color-container").style.background = `rgba(${currentRGB}, ${0.3})`;
+
   r.innerHTML = "R : " + redSlider.value;
   g.innerHTML = "G : " + greenSlider.value;
   b.innerHTML = "B : " + blueSlider.value;
@@ -93,42 +91,11 @@ setInterval(() => {
 }, 10);
 
 // Generates a random color
-randomBtn.addEventListener("click", () => {
+element("#rnd-btn").addEventListener("click", () => {
   redSlider.value = Math.random() * 255;
   greenSlider.value = Math.random() * 255;
   blueSlider.value = Math.random() * 255;
 });
-
-function copyStringToClipboard(str) {
-  var el = document.createElement("textarea");
-  el.value = str;
-  el.setAttribute("readonly", "");
-  el.style = { position: "absolute", left: "-9999px" };
-  document.body.appendChild(el);
-  el.select();
-  document.execCommand("copy");
-  document.body.removeChild(el);
-}
-
-// copy colour code to clipboard
-const colorCodeElems = document.querySelectorAll(".color-code");
-const toolTipElems = document.querySelectorAll(".tooltip span");
-for (let i = 0; i < colorCodeElems.length; i++) {
-  colorCodeElems[i].addEventListener("click", function (e) {
-    if (i === 0) {
-      copyStringToClipboard(`${redSlider.value},${greenSlider.value},${blueSlider.value}`);
-    } else if (i === 1) {
-      copyStringToClipboard(hexElement.innerHTML);
-    } else {
-      copyStringToClipboard(rgbToHsl(redSlider.value, greenSlider.value, blueSlider.value));
-    }
-    // toggle tooltip opacity
-    toolTipElems[i].style.opacity = 1;
-    setTimeout(() => {
-      toolTipElems[i].style.opacity = 0;
-    }, 1000);
-  });
-}
 
 const fullscreenColor = document.querySelector(".fullscreen-color");
 const closeBtn = document.querySelector("#close-btn");
@@ -137,12 +104,12 @@ header.addEventListener("click", function (e) {
   if (e.target == this) {
     fullscreenColor.style.background = `rgb(${redSlider.value},${greenSlider.value},${blueSlider.value})`;
     fullscreenColor.style.top = "0";
-    fullscreenHex.innerHTML = hexElement.innerHTML;
+    fullscreenHex.innerHTML = hexElement.innerText;
   }
 });
+
 closeBtn.addEventListener("click", () => {
   fullscreenColor.style.top = "100%";
-  // closeBtn.style.display = "none";
 });
 
 function createFaveColor(color) {
@@ -177,7 +144,6 @@ function createFaveColor(color) {
   });
 
   localStorage.setItem(color, "color");
-  // localStorage.clear();
 }
 
 // load saved colors from local storage
@@ -187,7 +153,7 @@ for (const [key, value] of Object.entries(localStorage)) {
   }
 }
 
-element("#save").addEventListener("click", () => {
+element("#save-btn").addEventListener("click", () => {
   // check duplicates
   for (const [key, value] of Object.entries(localStorage)) {
     if (key === hexElement.innerHTML) return;

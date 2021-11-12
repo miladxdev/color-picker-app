@@ -101,3 +101,34 @@ function setColor(hex) {
   greenSlider.value = rgb.g;
   blueSlider.value = rgb.b;
 }
+
+function copyStringToClipboard(str) {
+  var el = document.createElement("textarea");
+  el.value = str;
+  el.setAttribute("readonly", "");
+  el.style = { position: "absolute", left: "-9999px" };
+  document.body.appendChild(el);
+  el.select();
+  document.execCommand("copy");
+  document.body.removeChild(el);
+}
+
+// copy colour code to clipboard
+const colorCodeElems = document.querySelectorAll(".color-code");
+const toolTipElems = document.querySelectorAll(".tooltip span");
+for (let i = 0; i < colorCodeElems.length; i++) {
+  colorCodeElems[i].addEventListener("click", function (e) {
+    if (i === 0) {
+      copyStringToClipboard(`${redSlider.value},${greenSlider.value},${blueSlider.value}`);
+    } else if (i === 1) {
+      copyStringToClipboard(hexElement.innerHTML);
+    } else {
+      copyStringToClipboard(rgbToHsl(redSlider.value, greenSlider.value, blueSlider.value));
+    }
+    // toggle tooltip opacity
+    toolTipElems[i].style.opacity = 1;
+    setTimeout(() => {
+      toolTipElems[i].style.opacity = 0;
+    }, 1000);
+  });
+}

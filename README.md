@@ -72,7 +72,6 @@ This singel page application alows you to pick RGB colors and then get RGB/HEX/H
 - `CSS`
 - `JAVASCRIPT`
 
-<hr>
 <!-- ROADMAP -->
 
 ## Roadmap
@@ -101,7 +100,9 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 ## Contact
 
-Milad Gharibi - [@twitter](https://twitter.com/your_username) - miladxgh@gmail.com
+`Milad Gharibi`
+
+Email: miladxdev@gmail.com
 
 Project Link: [https://github.com/miladxdev/color-picker-app](https://github.com/miladxdev/color-picker-app)
 
