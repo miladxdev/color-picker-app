@@ -72,6 +72,9 @@ setInterval(() => {
   h.innerHTML = "H : " + currentHSL.h;
   s.innerHTML = "S : " + currentHSL.s + "%";
   l.innerHTML = "L : " + currentHSL.l + "%";
+
+  // save last color
+  localStorage.setItem("lastColor", currentHEX);
 }, 10);
 
 // Generates a random color
@@ -103,6 +106,9 @@ for (const [key, value] of Object.entries(localStorage)) {
     createFaveColor(key);
   }
 }
+
+// load last seen color
+setColor(localStorage.getItem("lastColor"));
 
 element("#save-btn").addEventListener("click", () => {
   // check duplicates
