@@ -1,4 +1,5 @@
 const element = (e) => document.querySelector(e);
+const elements = (e) => document.querySelectorAll(e);
 
 // DOM elements
 const header = element("#header");
@@ -10,18 +11,18 @@ const greenSlider = element("#green");
 const blueSlider = element("#blue");
 
 // #hues #tints #shadows span elements
-const tints = document.querySelectorAll("#tints span");
-const shades = document.querySelectorAll("#shades span");
-const hues = document.querySelectorAll("#hues span");
+const tints = elements("#tints span");
+const shades = elements("#shades span");
+const hues = elements("#hues span");
 
-// rgb code color
-const r = document.getElementById("r");
-const g = document.getElementById("g");
-const b = document.getElementById("b");
-// hsl code color
-const h = document.getElementById("h");
-const s = document.getElementById("s");
-const l = document.getElementById("l");
+// rgb conversion
+const r = element("#r");
+const g = element("#g");
+const b = element("#b");
+// hsl conversion
+const h = element("#h");
+const s = element("#s");
+const l = element("#l");
 
 setInterval(() => {
   let currentRGB = `${redSlider.value},${greenSlider.value},${blueSlider.value}`;
@@ -33,7 +34,7 @@ setInterval(() => {
   greenSlider.style.backgroundImage = `linear-gradient(to right, rgba(${redSlider.value},0,${blueSlider.value}, 0.5), rgba(${redSlider.value},255,${blueSlider.value}, 0.5)`;
   blueSlider.style.backgroundImage = `linear-gradient(to right, rgba(${redSlider.value},${greenSlider.value},0, 0.5), rgba(${redSlider.value},${greenSlider.value},255, 0.5)`;
 
-  // element("#app-container").style.boxShadow = `0 0 40px 0 rgba(${currentRGB}, ${0.5})`;
+  // element("#app-container").style.boxShadow = `0 0 150px 0 rgba(${currentRGB}, ${0.5})`;
   element("#app-container").style.border = `6px solid rgba(${currentRGB}, ${0.4})`;
 
   // updates header background with current slider values
@@ -43,9 +44,6 @@ setInterval(() => {
   element("#red-slider-value").innerText = redSlider.value;
   element("#green-slider-value").innerText = greenSlider.value;
   element("#blue-slider-value").innerText = blueSlider.value;
-
-  // displays hex color code
-  hexElement.innerHTML = currentHEX;
 
   // #hues #tints #shadows colors
   let alpha = 0;
@@ -62,8 +60,9 @@ setInterval(() => {
     alpha += 0.1;
   }
 
-  element("#state").style.background = `rgba(${currentRGB}, ${0.3})`;
-  element(".fave-color-container").style.background = `rgba(${currentRGB}, ${0.3})`;
+  element("#conversion").style.background = `rgba(${currentRGB}, ${0.3})`;
+  // upadate conversions
+  hexElement.innerHTML = currentHEX;
 
   r.innerHTML = "R : " + redSlider.value;
   g.innerHTML = "G : " + greenSlider.value;
@@ -72,6 +71,8 @@ setInterval(() => {
   h.innerHTML = "H : " + currentHSL.h;
   s.innerHTML = "S : " + currentHSL.s + "%";
   l.innerHTML = "L : " + currentHSL.l + "%";
+
+  element(".fave-color-container").style.background = `rgba(${currentRGB}, ${0.3})`;
 
   // save last color
   localStorage.setItem("lastColor", currentHEX);

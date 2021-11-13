@@ -176,12 +176,6 @@ input#blue::-webkit-slider-thumb {
   width: 100%;
   color: white;
 }
-#shades {
-  background: #000000;
-}
-#hues {
-  background: grey;
-}
 
 #tints span,
 #shades span,
@@ -207,7 +201,7 @@ input#blue::-webkit-slider-thumb {
   opacity: 0.95;
 }
 
-.state {
+.conversion {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -240,7 +234,7 @@ input#blue::-webkit-slider-thumb {
 #mycolor-input {
   border: 2px solid #c4c4c4;
   outline: none;
-  border-radius: 8px;
+  border-radius: 4px;
   padding: 4px;
   font-size: 16px;
   width: 100%;
@@ -283,7 +277,7 @@ input#blue::-webkit-slider-thumb {
   color: white;
   border-radius: 10px;
   padding: 2px 8px;
-  background: rgba(0, 0, 0, 0.2);
+  background: rgba(0, 0, 0, 0.1);
   opacity: 0.9;
 }
 
