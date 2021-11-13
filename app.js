@@ -1,6 +1,6 @@
 const element = (e) => document.querySelector(e);
 
-// elements in header
+// DOM elements
 const header = element("#header");
 const hexElement = element("#hex");
 
@@ -9,28 +9,11 @@ const redSlider = element("#red");
 const greenSlider = element("#green");
 const blueSlider = element("#blue");
 
-// all #hues and #tints and #shadows
+// #hues #tints #shadows span elements
 const tints = document.querySelectorAll("#tints span");
 const shades = document.querySelectorAll("#shades span");
 const hues = document.querySelectorAll("#hues span");
 
-for (let tint of tints) {
-  tint.addEventListener("click", function () {
-    setColor(this.innerText);
-  });
-}
-
-for (let tint of shades) {
-  tint.addEventListener("click", function () {
-    setColor(this.innerText);
-  });
-}
-
-for (let tint of hues) {
-  tint.addEventListener("click", function () {
-    setColor(this.innerText);
-  });
-}
 // rgb code color
 const r = document.getElementById("r");
 const g = document.getElementById("g");
@@ -45,7 +28,7 @@ setInterval(() => {
   let currentHEX = rgbToHex(redSlider.value, greenSlider.value, blueSlider.value);
   let currentHSL = rgbToHsl(redSlider.value, greenSlider.value, blueSlider.value);
 
-  // sliders gradient background
+  // sliders live gradient background
   redSlider.style.backgroundImage = `linear-gradient(to right, rgba(0,${greenSlider.value},${blueSlider.value}, 0.5), rgba(255,${greenSlider.value},${blueSlider.value}, 0.5)`;
   greenSlider.style.backgroundImage = `linear-gradient(to right, rgba(${redSlider.value},0,${blueSlider.value}, 0.5), rgba(${redSlider.value},255,${blueSlider.value}, 0.5)`;
   blueSlider.style.backgroundImage = `linear-gradient(to right, rgba(${redSlider.value},${greenSlider.value},0, 0.5), rgba(${redSlider.value},${greenSlider.value},255, 0.5)`;
@@ -53,9 +36,10 @@ setInterval(() => {
   // element("#app-container").style.boxShadow = `0 0 40px 0 rgba(${currentRGB}, ${0.5})`;
   element("#app-container").style.border = `6px solid rgba(${currentRGB}, ${0.4})`;
 
-  // updates header with current slider values
+  // updates header background with current slider values
   header.style.background = `rgb(${currentRGB})`;
 
+  // slider R/G/B current values
   element("#red-slider-value").innerText = redSlider.value;
   element("#green-slider-value").innerText = greenSlider.value;
   element("#blue-slider-value").innerText = blueSlider.value;
@@ -63,7 +47,7 @@ setInterval(() => {
   // displays hex color code
   hexElement.innerHTML = currentHEX;
 
-  // color tints and shadows
+  // #hues #tints #shadows colors
   let alpha = 0;
   for (let i = 0; i < tints.length; i++) {
     tints[i].style.background = shadeColor(currentHEX, alpha * 100);
@@ -73,7 +57,7 @@ setInterval(() => {
     shades[i].querySelector("p").innerText = shadeColor(currentHEX, -alpha * 100);
 
     hues[i].style.background = `hsl(${currentHSL.h + alpha * 50}, ${currentHSL.s}%, ${currentHSL.l}% )`;
-    hues[i].querySelector("p").innerText = hslToHex(currentHSL.h + alpha * 50, currentHSL.s, currentHSL.l);
+    hues[i].querySelector("p").innerText = hslToHex(currentHSL.h + alpha * 60, currentHSL.s, currentHSL.l);
 
     alpha += 0.1;
   }
@@ -97,54 +81,21 @@ element("#rnd-btn").addEventListener("click", () => {
   blueSlider.value = Math.random() * 255;
 });
 
-const fullscreenColor = document.querySelector(".fullscreen-color");
-const closeBtn = document.querySelector("#close-btn");
-const fullscreenHex = document.querySelector(".fullscreen-hex");
+const fullscreenColor = element(".fullscreen-color");
+const fullscreenHex = element(".fullscreen-hex");
+
 header.addEventListener("click", function (e) {
   if (e.target == this) {
     fullscreenColor.style.background = `rgb(${redSlider.value},${greenSlider.value},${blueSlider.value})`;
     fullscreenColor.style.top = "0";
-    fullscreenHex.innerHTML = hexElement.innerText;
+    element(".fullscreen-hex").innerHTML = hexElement.innerHTML;
   }
 });
 
-closeBtn.addEventListener("click", () => {
+// close fullscreen color
+element("#close-btn").addEventListener("click", () => {
   fullscreenColor.style.top = "100%";
 });
-
-function createFaveColor(color) {
-  // favecolor div
-  const div = document.createElement("div");
-  div.style.background = color;
-  div.style.opacity = "0";
-  div.innerHTML = color;
-  div.classList.add("fave-color");
-  setTimeout(() => (div.style.opacity = "1"));
-  element(".fave-color-container").appendChild(div);
-
-  // delete button
-  const span = document.createElement("span");
-  span.innerHTML = "<i class='fa fa-times'></i>";
-  span.classList.add("delete-color");
-  div.appendChild(span);
-
-  div.addEventListener("click", function (e) {
-    if (e.target == this) {
-      copyStringToClipboard(e.target.innerText);
-      fullscreenColor.style.background = e.target.innerText;
-      fullscreenColor.style.top = "0";
-      fullscreenHex.innerHTML = div.innerHTML;
-    }
-  });
-
-  span.addEventListener("click", function () {
-    div.style.opacity = 0;
-    setTimeout(() => div.remove(), 240);
-    localStorage.removeItem(this.parentNode.innerText);
-  });
-
-  localStorage.setItem(color, "color");
-}
 
 // load saved colors from local storage
 for (const [key, value] of Object.entries(localStorage)) {
@@ -179,6 +130,24 @@ element("#mycolor-input").onchange = function () {
   greenSlider.value = hexToRgb(myHex).g;
   blueSlider.value = hexToRgb(myHex).b;
 };
+
+for (let tint of tints) {
+  tint.addEventListener("click", function () {
+    setColor(this.innerText);
+  });
+}
+
+for (let tint of shades) {
+  tint.addEventListener("click", function () {
+    setColor(this.innerText);
+  });
+}
+
+for (let tint of hues) {
+  tint.addEventListener("click", function () {
+    setColor(this.innerText);
+  });
+}
 
 // instagram: web.script
 // © 2021 Milad Gharibi. All rights reserved

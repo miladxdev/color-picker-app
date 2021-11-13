@@ -113,6 +113,41 @@ function copyStringToClipboard(str) {
   document.body.removeChild(el);
 }
 
+// favorite color component
+function createFaveColor(color) {
+  // favecolor div
+  const div = document.createElement("div");
+  div.style.background = color;
+  div.style.opacity = "0";
+  div.innerHTML = color;
+  div.classList.add("fave-color");
+  setTimeout(() => (div.style.opacity = "1"));
+  element(".fave-color-container").appendChild(div);
+
+  // delete button
+  const span = document.createElement("span");
+  span.innerHTML = "<i class='fa fa-times'></i>";
+  span.classList.add("delete-color");
+  div.appendChild(span);
+
+  div.addEventListener("click", function (e) {
+    if (e.target == this) {
+      copyStringToClipboard(e.target.innerText);
+      fullscreenColor.style.background = e.target.innerText;
+      fullscreenColor.style.top = "0";
+      fullscreenHex.innerHTML = this.innerText;
+    }
+  });
+
+  span.addEventListener("click", function () {
+    div.style.opacity = 0;
+    setTimeout(() => div.remove(), 240);
+    localStorage.removeItem(this.parentNode.innerText);
+  });
+
+  localStorage.setItem(color, "color");
+}
+
 // copy colour code to clipboard
 const colorCodeElems = document.querySelectorAll(".color-code");
 const toolTipElems = document.querySelectorAll(".tooltip span");
