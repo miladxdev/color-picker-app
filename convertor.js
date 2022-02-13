@@ -158,7 +158,8 @@ for (let i = 0; i < colorCodeElems.length; i++) {
     } else if (i === 1) {
       copyStringToClipboard(hexElement.innerHTML);
     } else {
-      copyStringToClipboard(rgbToHsl(redSlider.value, greenSlider.value, blueSlider.value));
+      const hsl = rgbToHsl(redSlider.value, greenSlider.value, blueSlider.value);
+      copyStringToClipboard(`${hsl.h}, ${hsl.s}%, ${hsl.l}%`);
     }
     // toggle tooltip opacity
     toolTipElems[i].style.opacity = 1;
